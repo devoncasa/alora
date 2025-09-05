@@ -30,10 +30,10 @@ const AppContent: React.FC = () => {
         let newTitle: string;
         let newDescription: string;
 
-        if (productDetailData) {
-            // For product detail pages, use product-specific info
-            newTitle = `${productDetailData.name} | Alora Biofilm`;
-            newDescription = productDetailData.hero; // This is the translated hero text
+        if (productDetailData && productDetailData.seo) {
+            // For product detail pages, use product-specific SEO from translations
+            newTitle = productDetailData.seo.title;
+            newDescription = productDetailData.seo.description;
         } else {
             // For main content pages, use page-specific SEO from translations
             switch (page) {

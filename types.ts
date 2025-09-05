@@ -24,6 +24,10 @@ export type ClinicalSpec = {
 export type ProductDetailData = {
     name: string;
     hero: string;
+    seo: {
+        title: string;
+        description: string;
+    };
     whatItIs: string;
     howItWorks: string[];
     clinicalSpecs: ClinicalSpec[];

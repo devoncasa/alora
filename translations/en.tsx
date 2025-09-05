@@ -66,6 +66,10 @@ export const enContent: AloraDataType = {
            {
                 name: 'Alora Clinical Wound Film',
                 hero: 'An advanced, sterile, dual-biopolymer film designed to accelerate healing in a wide range of acute and chronic wounds by creating an optimal moist micro-environment.',
+                seo: {
+                    title: 'Alora Clinical Wound Film | Alora Biofilm',
+                    description: 'An advanced, sterile, dual-biopolymer film designed to accelerate healing in a wide range of acute and chronic wounds by creating an optimal moist micro-environment.'
+                },
                 whatItIs: 'Alora Wound Film is a transparent, flexible, and highly absorbent dressing made from a synergistic matrix of aloe polysaccharides (acemannan) and plant-derived pectin. It provides a moist, breathable barrier that protects the wound from contamination while actively supporting the body\'s natural healing processes.',
                 howItWorks: [
                     'Maintains a moist wound environment essential for re-epithelialization.',
@@ -101,6 +105,10 @@ export const enContent: AloraDataType = {
             {
                 name: 'Alora Oral Mucoadhesive Patch',
                 hero: 'A targeted, dissolvable patch that adheres to oral mucosa, providing a protective barrier and sustained delivery for localized treatment.',
+                seo: {
+                    title: 'Alora Oral Mucoadhesive Patch | Alora Biofilm',
+                    description: 'A targeted, dissolvable patch that adheres to oral mucosa, providing a protective barrier and sustained delivery for localized treatment.'
+                },
                 whatItIs: 'This mucoadhesive patch is engineered from a blend of aloe and pectin that becomes highly adhesive in the moist oral environment. It protects lesions like aphthous ulcers from irritation while delivering soothing or active ingredients directly to the site.',
                 howItWorks: [
                     'Adheres to oral mucosa within seconds of contact.',
@@ -127,6 +135,10 @@ export const enContent: AloraDataType = {
             {
                 name: 'Alora Pro-Collagen Skincare Mask',
                 hero: 'A luxurious, transparent biofilm sheet mask that delivers a clinical-grade dose of hydration, peptides, and antioxidants for visibly plumper, radiant skin.',
+                seo: {
+                    title: 'Alora Pro-Collagen Skincare Mask | Alora Biofilm',
+                    description: 'A luxurious, transparent biofilm sheet mask that delivers a clinical-grade dose of hydration, peptides, and antioxidants for visibly plumper, radiant skin.'
+                },
                 whatItIs: 'Unlike traditional fiber masks, this is a solid hydrogel sheet of pure aloe-pectin biofilm. It adheres perfectly to facial contours, creating an occlusive barrier that dramatically enhances the penetration of its serum, which is infused with Vitamin C, Hyaluronic Acid, and Matrixyl peptides.',
                 howItWorks: [
                     'Creates a "second skin" effect for maximum ingredient absorption.',
@@ -153,6 +165,10 @@ export const enContent: AloraDataType = {
             {
                 name: 'Alora Ocular Delivery Film',
                 hero: 'An innovative, transparent ocular film providing sustained lubrication and therapeutic delivery.',
+                seo: {
+                    title: 'Alora Ocular Delivery Film | Alora Biofilm',
+                    description: 'An innovative, transparent ocular film providing sustained lubrication and therapeutic delivery.'
+                },
                 whatItIs: 'A micro-thin, sterile film of aloe and pectin that dissolves slowly upon insertion into the conjunctival sac.',
                 howItWorks: ['Provides sustained lubrication.', 'Can be loaded with ophthalmic drugs for controlled release.'],
                 clinicalSpecs: [{ label: 'Material', value: 'Ophthalmic-grade Aloe/Pectin' }],
@@ -167,6 +183,10 @@ export const enContent: AloraDataType = {
             {
                 name: 'Alora Post-Procedure Calming Film',
                 hero: 'A sterile, soothing film to accelerate recovery after aesthetic procedures.',
+                seo: {
+                    title: 'Alora Post-Procedure Calming Film | Alora Biofilm',
+                    description: 'A sterile, soothing film to accelerate recovery after aesthetic procedures.'
+                },
                 whatItIs: 'A cooling, hydrating film applied immediately after procedures like microneedling or laser resurfacing.',
                 howItWorks: ['Reduces redness and inflammation.', 'Provides a protective, hydrating barrier.'],
                 clinicalSpecs: [{ label: 'Key Ingredient', value: 'High-concentration Aloe Polysaccharide' }],
@@ -181,6 +201,10 @@ export const enContent: AloraDataType = {
             {
                 name: 'Alora Bio-Active Scar Sheet',
                 hero: 'A discreet, hydrating sheet to minimize and improve the appearance of scars.',
+                seo: {
+                    title: 'Alora Bio-Active Scar Sheet | Alora Biofilm',
+                    description: 'A discreet, hydrating sheet to minimize and improve the appearance of scars.'
+                },
                 whatItIs: 'A soft, self-adhesive sheet that provides occlusion and hydration to scar tissue.',
                 howItWorks: ['Hydrates the stratum corneum.', 'Softens and flattens hypertrophic and keloid scars.'],
                 clinicalSpecs: [{ label: 'Wear Time', value: 'Up to 24 hours' }],
