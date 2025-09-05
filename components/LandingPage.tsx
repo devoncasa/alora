@@ -1,0 +1,110 @@
+import React from 'react';
+import ProductCard from './ProductCard';
+import PersuasionCard from './PersuasionCard';
+import { useLanguage } from '../hooks/useLanguage';
+
+interface LandingPageProps {
+  setPage: (page: string) => void;
+  setSelectedProduct: (productName: string) => void;
+  heroBannerUrl: string;
+}
+
+const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, heroBannerUrl }) => {
+    const { t } = useLanguage();
+
+    return (
+        <>
+            {/* Hero Section */}
+            <section id="hero" className="relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16">
+                <div 
+                    className="absolute inset-0 bg-cover bg-center" 
+                    style={{ backgroundImage: `url(${heroBannerUrl})` }}
+                ></div>
+                <div className="absolute inset-0 bg-green-50/70"></div>
+                <div className="relative z-10 container mx-auto px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <img 
+                            src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp" 
+                            alt={t.imageAlts.aloraLogo}
+                            className="w-48 mx-auto mb-8"
+                        />
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-emerald-900/90 brand-font">
+                            {t.landingPageContent.hero.title}
+                        </h1>
+                        <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-700/90">
+                            {t.landingPageContent.hero.subtitle}
+                        </p>
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                            <a href="#products" className="bg-emerald-600/90 text-white/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 w-full sm:w-auto">
+                                {t.landingPageContent.hero.exploreButton}
+                            </a>
+                            <button onClick={() => setPage('science')} className="bg-white/70 text-emerald-700/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 w-full sm:w-auto border border-emerald-200/50">
+                                {t.landingPageContent.hero.scienceButton}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            {/* Introduction Paragraph */}
+            <section className="py-16 bg-white/70">
+                <div className="container mx-auto px-6">
+                    <p className="max-w-4xl mx-auto text-center text-lg md:text-xl text-gray-700/90 leading-relaxed">
+                        {t.landingPageContent.intro}
+                    </p>
+                </div>
+            </section>
+            
+            {/* Persuasion Sections */}
+            <section className="py-16 bg-green-50/70">
+                <div className="container mx-auto px-6">
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <PersuasionCard cardData={t.landingPageContent.persuasion.clinical} imageAlt={t.imageAlts.clinicalChart} />
+                        <PersuasionCard cardData={t.landingPageContent.persuasion.beauty} imageAlt={t.imageAlts.skincareModel} />
+                    </div>
+                </div>
+            </section>
+            
+            {/* Products Grid */}
+            <section id="products" className="py-20 bg-white/70">
+                 <h2 className="text-3xl md:text-4xl font-bold text-emerald-800/90 text-center mb-12">{t.landingPageContent.products.title}</h2>
+                <div className="container mx-auto px-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {t.data.productCards.map((product) => (
+                             <ProductCard key={product.name} product={product} onViewDetails={setSelectedProduct} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+            
+            {/* Proof & Trust Strip */}
+            <section className="py-16 bg-green-50/70">
+                <div className="container mx-auto px-6 text-center">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center mb-6">
+                        {t.data.trustIcons.map(item => (
+                            <div key={item.name} className="flex flex-col items-center">
+                                {item.icon}
+                                <p className="mt-2 text-sm text-gray-600/90 font-medium">{item.name}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <p className="max-w-3xl mx-auto text-gray-700/90 text-center italic">
+                        {t.landingPageContent.trust.quote}
+                    </p>
+                </div>
+            </section>
+
+            {/* CTA Band */}
+            <section id="contact" className="py-20 bg-emerald-700/70 text-white">
+                <div className="container mx-auto px-6 text-center">
+                     <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white/90">{t.landingPageContent.cta.title}</h3>
+                     <a href="mailto:medical.affairs@alora.bio" className="bg-white/70 text-emerald-700/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-100 hover:text-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        {t.landingPageContent.cta.button}
+                     </a>
+                </div>
+            </section>
+        </>
+    );
+};
+
+export default LandingPage;
