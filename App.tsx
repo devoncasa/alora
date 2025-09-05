@@ -26,36 +26,40 @@ const AppContent: React.FC = () => {
     const productDetailData: ProductDetailData | undefined = selectedProduct ? t.data.productDetails.find(p => p.name === selectedProduct) : undefined;
 
     useEffect(() => {
-        const metaDesc = document.querySelector('meta[name="description"]');
-        
-        let title = t.seo.landing.title;
-        let description = t.seo.landing.description;
+        const metaDescTag = document.querySelector('meta[name="description"]');
+        let newTitle: string;
+        let newDescription: string;
 
         if (productDetailData) {
-            title = `${productDetailData.name} | Alora Biofilm`;
-            description = productDetailData.hero;
+            // For product detail pages, use product-specific info
+            newTitle = `${productDetailData.name} | Alora Biofilm`;
+            newDescription = productDetailData.hero; // This is the translated hero text
         } else {
+            // For main content pages, use page-specific SEO from translations
             switch (page) {
                 case 'science':
-                    title = t.seo.science.title;
-                    description = t.seo.science.description;
+                    newTitle = t.seo.science.title;
+                    newDescription = t.seo.science.description;
                     break;
                 case 'innovation':
-                    title = t.seo.innovation.title;
-                    description = t.seo.innovation.description;
+                    newTitle = t.seo.innovation.title;
+                    newDescription = t.seo.innovation.description;
                     break;
                 case 'landing':
                 default:
-                    title = t.seo.landing.title;
-                    description = t.seo.landing.description;
+                    newTitle = t.seo.landing.title;
+                    newDescription = t.seo.landing.description;
                     break;
             }
         }
+
+        // Apply the new metadata to the document
+        document.title = newTitle;
+        if (metaDescTag) {
+            metaDescTag.setAttribute('content', newDescription);
+        }
         
-        document.title = title;
-        if (metaDesc) metaDesc.setAttribute('content', description);
-        
-    }, [selectedProduct, productDetailData, page, language, t]);
+    }, [page, productDetailData, t]); // Dependencies cover changes in page, product, and language
 
     const renderPage = () => {
         if (productDetailData) {
