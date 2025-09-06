@@ -68,7 +68,8 @@ export const enContent: AloraDataType = {
                 hero: 'An advanced, sterile, dual-biopolymer film designed to accelerate healing in a wide range of acute and chronic wounds by creating an optimal moist micro-environment.',
                 seo: {
                     title: 'Alora Clinical Wound Film | Alora Biofilm',
-                    description: 'An advanced, sterile, dual-biopolymer film designed to accelerate healing in a wide range of acute and chronic wounds by creating an optimal moist micro-environment.'
+                    description: 'An advanced, sterile, dual-biopolymer film designed to accelerate healing in a wide range of acute and chronic wounds by creating an optimal moist micro-environment.',
+                    keywords: 'wound film, sterile dressing, chronic wounds, acute wounds, moist healing, acemannan, pectin dressing, diabetic ulcer treatment'
                 },
                 whatItIs: 'Alora Wound Film is a transparent, flexible, and highly absorbent dressing made from a synergistic matrix of aloe polysaccharides (acemannan) and plant-derived pectin. It provides a moist, breathable barrier that protects the wound from contamination while actively supporting the body\'s natural healing processes.',
                 howItWorks: [
@@ -107,7 +108,8 @@ export const enContent: AloraDataType = {
                 hero: 'A targeted, dissolvable patch that adheres to oral mucosa, providing a protective barrier and sustained delivery for localized treatment.',
                 seo: {
                     title: 'Alora Oral Mucoadhesive Patch | Alora Biofilm',
-                    description: 'A targeted, dissolvable patch that adheres to oral mucosa, providing a protective barrier and sustained delivery for localized treatment.'
+                    description: 'A targeted, dissolvable patch that adheres to oral mucosa, providing a protective barrier and sustained delivery for localized treatment.',
+                    keywords: 'mucoadhesive patch, oral lesion treatment, canker sore patch, dissolvable film, oral drug delivery, aphthous ulcer'
                 },
                 whatItIs: 'This mucoadhesive patch is engineered from a blend of aloe and pectin that becomes highly adhesive in the moist oral environment. It protects lesions like aphthous ulcers from irritation while delivering soothing or active ingredients directly to the site.',
                 howItWorks: [
@@ -137,7 +139,8 @@ export const enContent: AloraDataType = {
                 hero: 'A luxurious, transparent biofilm sheet mask that delivers a clinical-grade dose of hydration, peptides, and antioxidants for visibly plumper, radiant skin.',
                 seo: {
                     title: 'Alora Pro-Collagen Skincare Mask | Alora Biofilm',
-                    description: 'A luxurious, transparent biofilm sheet mask that delivers a clinical-grade dose of hydration, peptides, and antioxidants for visibly plumper, radiant skin.'
+                    description: 'A luxurious, transparent biofilm sheet mask that delivers a clinical-grade dose of hydration, peptides, and antioxidants for visibly plumper, radiant skin.',
+                    keywords: 'hydrogel face mask, pro-collagen mask, peptide mask, deep hydration, post-procedure skincare, vitamin c mask, sheet mask'
                 },
                 whatItIs: 'Unlike traditional fiber masks, this is a solid hydrogel sheet of pure aloe-pectin biofilm. It adheres perfectly to facial contours, creating an occlusive barrier that dramatically enhances the penetration of its serum, which is infused with Vitamin C, Hyaluronic Acid, and Matrixyl peptides.',
                 howItWorks: [
@@ -167,7 +170,8 @@ export const enContent: AloraDataType = {
                 hero: 'An innovative, transparent ocular film providing sustained lubrication and therapeutic delivery.',
                 seo: {
                     title: 'Alora Ocular Delivery Film | Alora Biofilm',
-                    description: 'An innovative, transparent ocular film providing sustained lubrication and therapeutic delivery.'
+                    description: 'An innovative, transparent ocular film providing sustained lubrication and therapeutic delivery.',
+                    keywords: 'ocular drug delivery, dry eye treatment, dissolvable eye film, sustained lubrication, ophthalmic film'
                 },
                 whatItIs: 'A micro-thin, sterile film of aloe and pectin that dissolves slowly upon insertion into the conjunctival sac.',
                 howItWorks: ['Provides sustained lubrication.', 'Can be loaded with ophthalmic drugs for controlled release.'],
@@ -185,7 +189,8 @@ export const enContent: AloraDataType = {
                 hero: 'A sterile, soothing film to accelerate recovery after aesthetic procedures.',
                 seo: {
                     title: 'Alora Post-Procedure Calming Film | Alora Biofilm',
-                    description: 'A sterile, soothing film to accelerate recovery after aesthetic procedures.'
+                    description: 'A sterile, soothing film to accelerate recovery after aesthetic procedures.',
+                    keywords: 'post-procedure calming, microneedling aftercare, laser resurfacing recovery, anti-inflammatory film, soothing mask'
                 },
                 whatItIs: 'A cooling, hydrating film applied immediately after procedures like microneedling or laser resurfacing.',
                 howItWorks: ['Reduces redness and inflammation.', 'Provides a protective, hydrating barrier.'],
@@ -203,7 +208,8 @@ export const enContent: AloraDataType = {
                 hero: 'A discreet, hydrating sheet to minimize and improve the appearance of scars.',
                 seo: {
                     title: 'Alora Bio-Active Scar Sheet | Alora Biofilm',
-                    description: 'A discreet, hydrating sheet to minimize and improve the appearance of scars.'
+                    description: 'A discreet, hydrating sheet to minimize and improve the appearance of scars.',
+                    keywords: 'scar treatment, scar reduction, silicone sheet alternative, keloid scar, hypertrophic scar, scar therapy'
                 },
                 whatItIs: 'A soft, self-adhesive sheet that provides occlusion and hydration to scar tissue.',
                 howItWorks: ['Hydrates the stratum corneum.', 'Softens and flattens hypertrophic and keloid scars.'],
@@ -222,6 +228,7 @@ export const enContent: AloraDataType = {
         products: 'Products',
         science: 'The Science',
         innovation: 'Innovation',
+        faq: 'FAQ',
         contact: 'Contact',
         requestSamples: 'Request Samples',
     },
@@ -399,6 +406,89 @@ export const enContent: AloraDataType = {
             }
         }
     },
+    faqPageContent: {
+        hero: {
+            title: 'Frequently Asked Questions',
+            subtitle: 'Find answers to common questions about our technology, products, and applications.'
+        },
+        sections: [
+            {
+                title: 'About the Technology',
+                faqs: [
+                    {
+                        q: 'What exactly is Alora Biofilm?',
+                        a: 'Alora Biofilm is an advanced biopolymer platform made from a synergistic matrix of purified Aloe vera polysaccharides (acemannan) and plant-derived pectin. This combination creates a versatile material that can be engineered into films, patches, and masks for medical and cosmetic uses.'
+                    },
+                    {
+                        q: 'What are the main active components?',
+                        a: 'The two core components are Aloe vera, which provides bioactive properties that support healing and reduce inflammation, and Pectin, which provides a structural, tunable scaffold for controlled release and optimal moisture management.'
+                    },
+                    {
+                        q: 'How is this different from other hydrogels or dressings?',
+                        a: 'The key difference is the synergy between aloe and pectin. This dual-polymer system allows for superior tunability of physical properties (adhesion, dissolution, strength) while incorporating the proven bioactivity of acemannan, something many synthetic hydrogels lack.'
+                    },
+                    {
+                        q: 'Is the technology patented?',
+                        a: 'Yes, we have a portfolio of patents and pending applications covering our core formulation, manufacturing processes, and specific applications of the technology.'
+                    },
+                    {
+                        q: 'Is the biofilm biodegradable and sustainable?',
+                        a: 'Absolutely. Both Aloe vera and pectin are from renewable plant sources, and the final product is fully biodegradable. Sustainability is a core principle of our technology.'
+                    }
+                ]
+            },
+            {
+                title: 'Applications & Usage',
+                faqs: [
+                    {
+                        q: 'What are the primary applications for Alora technology?',
+                        a: 'Our platform is highly versatile. Key application areas include advanced wound care (chronic and acute wounds), localized drug delivery (oral, ocular, transdermal), and high-performance skincare (hydrating masks, calming films, scar treatment).'
+                    },
+                    {
+                        q: 'Can Alora products be used on sensitive skin?',
+                        a: 'Yes. The materials are derived from natural sources and have undergone extensive biocompatibility testing (ISO 10993). Our cosmetic products are formulated to be hypoallergenic and fragrance-free, making them suitable for sensitive skin.'
+                    },
+                    {
+                        q: 'How long does a film or patch last when applied?',
+                        a: 'Wear time is tunable. Our wound care films can last up to 7 days, depending on wound conditions. Oral mucoadhesive patches last for several hours, while skincare masks are typically for short-duration (20-30 minute) treatments.'
+                    },
+                    {
+                        q: 'Can active pharmaceutical ingredients (APIs) be added?',
+                        a: 'Yes. The platform is an excellent vehicle for controlled drug delivery. We can incorporate a wide range of APIs, from small molecules to large peptides and growth factors, and can tune the release profile to meet specific therapeutic needs.'
+                    }
+                ]
+            },
+            {
+                title: 'Products & Partnership',
+                faqs: [
+                    {
+                        q: 'Are your medical products sterile?',
+                        a: 'Yes, all products intended for medical use, such as our wound films and post-procedure films, are sterilized, typically using gamma irradiation, to meet clinical standards (SAL 10⁻⁶).'
+                    },
+                    {
+                        q: 'Where are the products manufactured?',
+                        a: 'Our products are manufactured in facilities that are compliant with ISO 13485 standards for medical device manufacturing, ensuring the highest level of quality control and traceability.'
+                    },
+                    {
+                        q: 'Can I get samples of your products?',
+                        a: 'Yes, we provide samples to qualified clinical and commercial partners. Please use the "Request Samples" button or our contact form to submit your inquiry.'
+                    },
+                    {
+                        q: 'Are the skincare masks single-use?',
+                        a: 'Yes, for hygiene and performance reasons, our skincare masks are designed for a single application to deliver a fresh, potent dose of active ingredients each time.'
+                    },
+                    {
+                        q: 'How does the oral mucoadhesive patch stay in place?',
+                        a: 'The patch is engineered with a specific grade of pectin that becomes highly adhesive when it comes in contact with saliva in the mouth. This allows it to adhere firmly but gently to the oral mucosa for several hours before dissolving.'
+                    },
+                    {
+                        q: 'Is this technology available for licensing or white-label partnerships?',
+                        a: 'Yes, we actively seek commercial partners for licensing, co-development, and private label opportunities. Please contact our business development team through the contact form to discuss your project.'
+                    }
+                ]
+            }
+        ]
+    },
     productDetailPageContent: {
         backButton: '← Back to all products',
         titles: {
@@ -459,15 +549,41 @@ export const enContent: AloraDataType = {
     seo: {
         landing: {
             title: 'Alora Biofilm – Clinical & Skincare Portfolio',
-            description: 'Alora Biofilm combines bioactive Aloe vera films with pectin delivery science for advanced wound care, skincare, and controlled release applications.'
+            description: 'Alora Biofilm combines bioactive Aloe vera films with pectin delivery science for advanced wound care, skincare, and controlled release applications.',
+            keywords: 'Alora Biofilm, Aloe vera biofilm, pectin delivery, wound care, skincare, controlled release, mucoadhesive, hydrogel, biotechnology'
         },
         science: {
             title: 'The Science of Synergy | Alora Biofilm',
-            description: 'Explore the materials science behind our dual-biopolymer platform, combining Aloe vera\'s bioactivity with Pectin\'s structural control for superior performance.'
+            description: 'Explore the materials science behind our dual-biopolymer platform, combining Aloe vera\'s bioactivity with Pectin\'s structural control for superior performance.',
+            keywords: 'biopolymer science, acemannan, pectin hydrogel, material science, drug delivery mechanism, wound healing science, biocompatibility'
         },
         innovation: {
             title: 'Innovation Platform | Alora Biofilm',
-            description: 'Discover the Alora innovation platform, a versatile biopolymer technology for creating custom solutions in wound care, drug delivery, and cosmetics.'
+            description: 'Discover the Alora innovation platform, a versatile biopolymer technology for creating custom solutions in wound care, drug delivery, and cosmetics.',
+            keywords: 'biopolymer platform, medical device innovation, cosmetic technology, custom formulation, drug delivery systems, white-label skincare'
+        },
+        faq: {
+            title: 'FAQ | Alora Biofilm',
+            description: 'Find answers to frequently asked questions about Alora\'s biofilm technology, products, applications, and partnership opportunities.',
+            keywords: 'Alora Biofilm FAQ, biofilm technology, wound care questions, skincare application, mucoadhesive patch info, biopolymer'
         }
-    }
+    },
+    contactModal: {
+        title: 'Contact Us',
+        subtitle: "Have a question? We'd love to hear from you.",
+        nameLabel: 'Name',
+        emailLabel: 'Email',
+        messageLabel: 'Message',
+        submitButton: 'Send Message',
+        submittingButton: 'Sending...',
+        successTitle: 'Thank You!',
+        successMessage: 'Your message has been sent successfully. We will get back to you shortly.',
+        closeAlt: 'Close contact form',
+        errors: {
+            nameRequired: 'Name is required.',
+            emailRequired: 'Email is required.',
+            emailInvalid: 'Please enter a valid email address.',
+            messageRequired: 'Message is required.',
+        },
+    },
 };

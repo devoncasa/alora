@@ -27,6 +27,7 @@ export type ProductDetailData = {
     seo: {
         title: string;
         description: string;
+        keywords: string;
     };
     whatItIs: string;
     howItWorks: string[];
@@ -72,6 +73,7 @@ export interface AloraDataType {
         products: string;
         science: string;
         innovation: string;
+        faq: string;
         contact: string;
         requestSamples: string;
     };
@@ -132,7 +134,7 @@ export interface AloraDataType {
             demoButton: string;
         };
         hero: {
-            title: string;
+            title:string;
             subtitle: string;
         };
         sections: {
@@ -162,6 +164,16 @@ export interface AloraDataType {
             customization: { title: string; items: string[]; button: string; };
         };
     };
+    faqPageContent: {
+        hero: {
+            title: string;
+            subtitle: string;
+        };
+        sections: {
+            title: string;
+            faqs: { q: string; a: string; }[];
+        }[];
+    };
     productDetailPageContent: {
         backButton: string;
         titles: {
@@ -188,9 +200,28 @@ export interface AloraDataType {
     sustainabilitySection: { title: string; text: string; cta: string; };
     supportBand: { title: string; cta: string; };
     seo: {
-        landing: { title: string; description: string; };
-        science: { title: string; description: string; };
-        innovation: { title: string; description: string; };
+        landing: { title: string; description: string; keywords: string; };
+        science: { title: string; description: string; keywords: string; };
+        innovation: { title: string; description: string; keywords: string; };
+        faq: { title: string; description: string; keywords: string; };
+    };
+    contactModal: {
+        title: string;
+        subtitle: string;
+        nameLabel: string;
+        emailLabel: string;
+        messageLabel: string;
+        submitButton: string;
+        submittingButton: string;
+        successTitle: string;
+        successMessage: string;
+        closeAlt: string;
+        errors: {
+            nameRequired: string;
+            emailRequired: string;
+            emailInvalid: string;
+            messageRequired: string;
+        };
     };
 }
 

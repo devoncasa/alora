@@ -5,7 +5,9 @@ import MainContent from './components/MainContent';
 import ProductDetailPage from './components/ProductDetailPage';
 import ScienceBehindPage from './components/ScienceBehindPage';
 import InnovationPage from './components/InnovationPage';
+import FAQPage from './components/FAQPage';
 import BackgroundImage from './components/BackgroundImage';
+import ContactModal from './components/ContactModal';
 import { BACKGROUND_IMAGES, HERO_SECTION_BANNERS } from './constants';
 import { ProductDetailData } from './types';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -14,6 +16,7 @@ import { useLanguage } from './hooks/useLanguage';
 const AppContent: React.FC = () => {
     const [page, setPage] = useState('landing');
     const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
     const [heroBannerUrl, setHeroBannerUrl] = useState('');
     const { t, language } = useLanguage();
@@ -27,36 +30,33 @@ const AppContent: React.FC = () => {
 
     useEffect(() => {
         const metaDescTag = document.querySelector('meta[name="description"]');
-        let newTitle: string;
-        let newDescription: string;
-
-        if (productDetailData && productDetailData.seo) {
-            // For product detail pages, use product-specific SEO from translations
-            newTitle = productDetailData.seo.title;
-            newDescription = productDetailData.seo.description;
-        } else {
-            // For main content pages, use page-specific SEO from translations
+        const metaKeywordsTag = document.querySelector('meta[name="keywords"]');
+        
+        const getSeoData = (): { title: string; description: string; keywords: string; } => {
+            if (productDetailData?.seo) {
+                return productDetailData.seo;
+            }
             switch (page) {
                 case 'science':
-                    newTitle = t.seo.science.title;
-                    newDescription = t.seo.science.description;
-                    break;
+                    return t.seo.science;
                 case 'innovation':
-                    newTitle = t.seo.innovation.title;
-                    newDescription = t.seo.innovation.description;
-                    break;
+                    return t.seo.innovation;
+                case 'faq':
+                    return t.seo.faq;
                 case 'landing':
                 default:
-                    newTitle = t.seo.landing.title;
-                    newDescription = t.seo.landing.description;
-                    break;
+                    return t.seo.landing;
             }
-        }
+        };
 
-        // Apply the new metadata to the document
-        document.title = newTitle;
+        const { title, description, keywords } = getSeoData();
+
+        document.title = title;
         if (metaDescTag) {
-            metaDescTag.setAttribute('content', newDescription);
+            metaDescTag.setAttribute('content', description);
+        }
+        if (metaKeywordsTag) {
+            metaKeywordsTag.setAttribute('content', keywords);
         }
         
     }, [page, productDetailData, t]); // Dependencies cover changes in page, product, and language
@@ -70,6 +70,8 @@ const AppContent: React.FC = () => {
                 return <ScienceBehindPage heroBannerUrl={heroBannerUrl} />;
             case 'innovation':
                 return <InnovationPage heroBannerUrl={heroBannerUrl} />;
+            case 'faq':
+                return <FAQPage heroBannerUrl={heroBannerUrl} />;
             case 'landing':
             default:
                 return <MainContent setPage={setPage} setSelectedProduct={setSelectedProduct} heroBannerUrl={heroBannerUrl} />;
@@ -79,12 +81,13 @@ const AppContent: React.FC = () => {
     return (
         <div className={language === 'th' ? 'lang-th' : 'lang-en'}>
             <BackgroundImage imageUrl={backgroundImageUrl} altText={t.imageAlts.backgroundImage} />
+            <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
             <div className="relative z-10">
-                <Header setPage={setPage} setSelectedProduct={setSelectedProduct} />
+                <Header setPage={setPage} setSelectedProduct={setSelectedProduct} openContactModal={() => setIsContactModalOpen(true)} />
                 <main>
                     {renderPage()}
                 </main>
-                <Footer setPage={setPage} />
+                <Footer setPage={setPage} openContactModal={() => setIsContactModalOpen(true)} />
             </div>
         </div>
     );

@@ -48,8 +48,8 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                     style={{ backgroundImage: `url(${heroBannerUrl})` }}
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
-                <div className="relative z-10 container mx-auto px-6">
-                    <div className="max-w-4xl">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6">
                         <button onClick={() => setSelectedProduct(null)} className="text-sm font-semibold text-emerald-600/90 hover:text-emerald-800 mb-4">
                             {t.productDetailPageContent.backButton}
                         </button>
@@ -59,92 +59,94 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                 </div>
             </section>
 
-            <div className="container mx-auto px-6 py-16">
-                <div className="grid lg:grid-cols-3 gap-12">
-                    {/* Main Content */}
-                    <div className="lg:col-span-2 space-y-12">
-                        <DetailSection title={titles.whatItIs}>
-                            <p className="text-gray-700/90">{whatItIs}</p>
-                        </DetailSection>
-
-                        <DetailSection title={titles.howItWorks}>
-                            <ul className="space-y-3 text-gray-800/90">
-                                {howItWorks.map((item, index) => (
-                                    <li key={index} className="flex items-start">
-                                        <span className="flex-shrink-0 mr-3 mt-1"><CheckCircleIcon /></span>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </DetailSection>
-
-                         <DetailSection title={titles.indications}>
-                            <ul className="list-disc list-inside text-gray-700/90 space-y-1">
-                                {indications.map(item => <li key={item}>{item}</li>)}
-                            </ul>
-                        </DetailSection>
-
-                        <DetailSection title={titles.howToUse}>
-                            <p className="p-4 bg-gray-50/70 border border-gray-200/50 rounded-md text-gray-700/90 font-mono text-sm">{howToUse}</p>
-                        </DetailSection>
-                        
-                        {faqs && faqs.length > 0 && (
-                            <DetailSection title={titles.faq}>
-                               <div className="space-y-4">
-                                    {faqs.map((faq, index) => (
-                                        <div key={index}>
-                                            <h4 className="font-semibold text-gray-800/90">{faq.q}</h4>
-                                            <p className="text-gray-700/90">{faq.a}</p>
-                                        </div>
-                                    ))}
-                                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+                <div className="lg:col-start-2 lg:col-span-3 px-6 py-16">
+                    <div className="grid lg:grid-cols-3 gap-12">
+                        {/* Main Content */}
+                        <div className="lg:col-span-2 space-y-12">
+                            <DetailSection title={titles.whatItIs}>
+                                <p className="text-gray-700/90">{whatItIs}</p>
                             </DetailSection>
-                        )}
-                    </div>
 
-                    {/* Sidebar */}
-                    <aside className="space-y-8">
-                        <div>
-                             <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.specs}</h3>
-                             <SpecTable specs={clinicalSpecs} />
-                        </div>
-                        
-                        {options && options.length > 0 && (
-                            <div>
-                                <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.options}</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {options.map(opt => <span key={opt} className="bg-emerald-100/70 text-emerald-800/90 text-xs font-medium px-2.5 py-1 rounded-full">{opt}</span>)}
-                                </div>
-                            </div>
-                        )}
-
-                        {safety && safety.length > 0 && (
-                            <div>
-                                <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.safety}</h3>
-                                 <ul className="list-disc list-inside text-gray-700/90 space-y-1 text-sm">
-                                    {safety.map(item => <li key={item}>{item}</li>)}
-                                </ul>
-                            </div>
-                        )}
-
-                        {downloads && downloads.length > 0 && (
-                            <div>
-                                <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.downloads}</h3>
-                                <div className="space-y-3">
-                                    {downloads.map(item => (
-                                        <a key={item.name} href={item.link} className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all text-sm">
-                                            {item.name}
-                                        </a>
+                            <DetailSection title={titles.howItWorks}>
+                                <ul className="space-y-3 text-gray-800/90">
+                                    {howItWorks.map((item, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <span className="flex-shrink-0 mr-3 mt-1"><CheckCircleIcon /></span>
+                                            <span>{item}</span>
+                                        </li>
                                     ))}
-                                </div>
-                            </div>
-                        )}
+                                </ul>
+                            </DetailSection>
 
-                         <div className="space-y-4">
-                            <ImagePlaceholder src={images.hero} alt={t.imageAlts.productHero(name)} />
-                            <ImagePlaceholder src={images.macro} alt={t.imageAlts.productMacro(name)} className="h-48" />
+                             <DetailSection title={titles.indications}>
+                                <ul className="list-disc list-inside text-gray-700/90 space-y-1">
+                                    {indications.map(item => <li key={item}>{item}</li>)}
+                                </ul>
+                            </DetailSection>
+
+                            <DetailSection title={titles.howToUse}>
+                                <p className="p-4 bg-gray-50/70 border border-gray-200/50 rounded-md text-gray-700/90 font-mono text-sm">{howToUse}</p>
+                            </DetailSection>
+                            
+                            {faqs && faqs.length > 0 && (
+                                <DetailSection title={titles.faq}>
+                                   <div className="space-y-4">
+                                        {faqs.map((faq, index) => (
+                                            <div key={index}>
+                                                <h4 className="font-semibold text-gray-800/90">{faq.q}</h4>
+                                                <p className="text-gray-700/90">{faq.a}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </DetailSection>
+                            )}
                         </div>
-                    </aside>
+
+                        {/* Sidebar */}
+                        <aside className="space-y-8">
+                            <div>
+                                 <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.specs}</h3>
+                                 <SpecTable specs={clinicalSpecs} />
+                            </div>
+                            
+                            {options && options.length > 0 && (
+                                <div>
+                                    <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.options}</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {options.map(opt => <span key={opt} className="bg-emerald-100/70 text-emerald-800/90 text-xs font-medium px-2.5 py-1 rounded-full">{opt}</span>)}
+                                    </div>
+                                </div>
+                            )}
+
+                            {safety && safety.length > 0 && (
+                                <div>
+                                    <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.safety}</h3>
+                                     <ul className="list-disc list-inside text-gray-700/90 space-y-1 text-sm">
+                                        {safety.map(item => <li key={item}>{item}</li>)}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {downloads && downloads.length > 0 && (
+                                <div>
+                                    <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.downloads}</h3>
+                                    <div className="space-y-3">
+                                        {downloads.map(item => (
+                                            <a key={item.name} href={item.link} className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all text-sm">
+                                                {item.name}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                             <div className="space-y-4">
+                                <ImagePlaceholder src={images.hero} alt={t.imageAlts.productHero(name)} />
+                                <ImagePlaceholder src={images.macro} alt={t.imageAlts.productMacro(name)} className="h-48" />
+                            </div>
+                        </aside>
+                    </div>
                 </div>
             </div>
         </div>

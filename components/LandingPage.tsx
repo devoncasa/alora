@@ -21,8 +21,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
                     style={{ backgroundImage: `url(${heroBannerUrl})` }}
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
-                <div className="relative z-10 container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6">
                         <img 
                             src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp" 
                             alt={t.imageAlts.aloraLogo}
@@ -31,7 +31,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-emerald-900/90 brand-font">
                             {t.landingPageContent.hero.title}
                         </h1>
-                        <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-700/90">
+                        <p className="text-lg md:text-xl mb-8 mx-auto text-gray-700/90">
                             {t.landingPageContent.hero.subtitle}
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -48,19 +48,23 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
             
             {/* Introduction Paragraph */}
             <section className="py-16 bg-white/70">
-                <div className="container mx-auto px-6">
-                    <p className="max-w-4xl mx-auto text-center text-lg md:text-xl text-gray-700/90 leading-relaxed">
-                        {t.landingPageContent.intro}
-                    </p>
+                <div className="grid grid-cols-1 lg:grid-cols-5">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6">
+                        <p className="text-center text-lg md:text-xl text-gray-700/90 leading-relaxed">
+                            {t.landingPageContent.intro}
+                        </p>
+                    </div>
                 </div>
             </section>
             
             {/* Persuasion Sections */}
             <section className="py-16 bg-green-50/70">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <PersuasionCard cardData={t.landingPageContent.persuasion.clinical} imageAlt={t.imageAlts.clinicalChart} />
-                        <PersuasionCard cardData={t.landingPageContent.persuasion.beauty} imageAlt={t.imageAlts.skincareModel} />
+                <div className="grid grid-cols-1 lg:grid-cols-5">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6">
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <PersuasionCard cardData={t.landingPageContent.persuasion.clinical} imageAlt={t.imageAlts.clinicalChart} />
+                            <PersuasionCard cardData={t.landingPageContent.persuasion.beauty} imageAlt={t.imageAlts.skincareModel} />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -68,39 +72,45 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
             {/* Products Grid */}
             <section id="products" className="py-20 bg-white/70">
                  <h2 className="text-3xl md:text-4xl font-bold text-emerald-800/90 text-center mb-12">{t.landingPageContent.products.title}</h2>
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {t.data.productCards.map((product) => (
-                             <ProductCard key={product.name} product={product} onViewDetails={setSelectedProduct} />
-                        ))}
+                <div className="grid grid-cols-1 lg:grid-cols-5">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {t.data.productCards.map((product) => (
+                                 <ProductCard key={product.name} product={product} onViewDetails={setSelectedProduct} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
             
             {/* Proof & Trust Strip */}
             <section className="py-16 bg-green-50/70">
-                <div className="container mx-auto px-6 text-center">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center mb-6">
-                        {t.data.trustIcons.map(item => (
-                            <div key={item.name} className="flex flex-col items-center">
-                                {item.icon}
-                                <p className="mt-2 text-sm text-gray-600/90 font-medium">{item.name}</p>
-                            </div>
-                        ))}
+                <div className="grid grid-cols-1 lg:grid-cols-5">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center mb-6">
+                            {t.data.trustIcons.map(item => (
+                                <div key={item.name} className="flex flex-col items-center">
+                                    {item.icon}
+                                    <p className="mt-2 text-sm text-gray-600/90 font-medium">{item.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="mx-auto text-gray-700/90 text-center italic">
+                            {t.landingPageContent.trust.quote}
+                        </p>
                     </div>
-                    <p className="max-w-3xl mx-auto text-gray-700/90 text-center italic">
-                        {t.landingPageContent.trust.quote}
-                    </p>
                 </div>
             </section>
 
             {/* CTA Band */}
             <section id="contact" className="py-20 bg-emerald-700/70 text-white">
-                <div className="container mx-auto px-6 text-center">
-                     <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white/90">{t.landingPageContent.cta.title}</h3>
-                     <a href="mailto:medical.affairs@alora.bio" className="bg-white/70 text-emerald-700/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-100 hover:text-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        {t.landingPageContent.cta.button}
-                     </a>
+                <div className="grid grid-cols-1 lg:grid-cols-5">
+                     <div className="lg:col-start-2 lg:col-span-3 px-6 text-center">
+                         <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white/90">{t.landingPageContent.cta.title}</h3>
+                         <a href="mailto:medical.affairs@alora.bio" className="bg-white/70 text-emerald-700/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-100 hover:text-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            {t.landingPageContent.cta.button}
+                         </a>
+                    </div>
                 </div>
             </section>
         </>
