@@ -14,6 +14,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, delay }) => {
     const contentRef = useRef<HTMLDivElement>(null);
     const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
     const { t } = useLanguage();
+    const contentId = `feature-card-content-${delay}`;
 
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
@@ -35,16 +36,24 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, delay }) => {
                 </div>
             </div>
             <div
+                id={contentId}
                 ref={contentRef}
                 className="overflow-hidden transition-all duration-700 ease-in-out"
                 style={{ maxHeight: isExpanded ? `${contentRef.current?.scrollHeight}px` : '0px' }}
+                hidden={!isExpanded}
             >
                 <div className="mt-4 pt-4 border-t border-emerald-200">
                     <img src={imageSrc} alt={imageAlt} className="rounded-lg mb-4 w-full object-cover shadow-md" />
                     <p className="text-gray-600 text-left">{longDescription}</p>
                 </div>
             </div>
-            <button onClick={toggleExpand} className="read-more-btn mt-4 text-emerald-700 font-semibold">
+            <button 
+                onClick={toggleExpand} 
+                className="read-more-btn mt-4 text-emerald-700 font-semibold"
+                aria-expanded={isExpanded}
+                aria-controls={contentId}
+                aria-label={`Learn more about ${title}`}
+            >
                 {isExpanded ? t.featureCard.readLess : t.featureCard.readMore}
             </button>
         </div>

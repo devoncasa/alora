@@ -23,6 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails }) => 
                 <button 
                     onClick={() => onViewDetails(name)} 
                     className="w-full block text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all"
+                    aria-label={`View details for ${name}`}
                 >
                     {t.productCardContent.viewDetails}
                 </button>

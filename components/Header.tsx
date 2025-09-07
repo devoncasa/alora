@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 
 interface HeaderProps {
@@ -15,13 +15,17 @@ const LanguageSwitcher: React.FC<{className?: string}> = ({className}) => {
             <button 
                 onClick={() => setLanguage('en')}
                 className={`px-2 py-1 text-sm font-semibold rounded-md transition-colors ${language === 'en' ? 'text-emerald-600' : 'text-gray-500 hover:text-emerald-600'}`}
+                aria-label="Switch to English language"
+                aria-pressed={language === 'en'}
             >
                 EN
             </button>
-            <span className="text-gray-300">|</span>
+            <span className="text-gray-300" aria-hidden="true">|</span>
             <button 
                 onClick={() => setLanguage('th')}
                 className={`px-2 py-1 text-sm font-semibold rounded-md transition-colors ${language === 'th' ? 'text-emerald-600' : 'text-gray-500 hover:text-emerald-600'}`}
+                aria-label="Switch to Thai language"
+                aria-pressed={language === 'th'}
             >
                 TH
             </button>
@@ -33,6 +37,7 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { t } = useLanguage();
+    const mobileMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -44,6 +49,45 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
     
     useEffect(() => {
         document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    }, [isMenuOpen]);
+
+    // Focus trapping for mobile menu
+    useEffect(() => {
+        if (!isMenuOpen) return;
+
+        const menuElement = mobileMenuRef.current;
+        if (!menuElement) return;
+
+        const focusableElements = menuElement.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        const handleTabKeyPress = (e: KeyboardEvent) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) { // Shift+Tab
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        };
+        
+        const firstFocusableElement = menuElement.querySelector('button'); // First button in the language switcher
+        firstFocusableElement?.focus();
+        menuElement.addEventListener('keydown', handleTabKeyPress);
+
+        return () => {
+            menuElement.removeEventListener('keydown', handleTabKeyPress);
+        };
+
     }, [isMenuOpen]);
 
     const handleNav = (page: string) => {
@@ -71,18 +115,24 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
     };
 
     const MobileMenu = () => (
-        <div className={`fixed inset-0 z-40 bg-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div 
+            ref={mobileMenuRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Main menu"
+            className={`fixed inset-0 z-40 bg-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <div className="container mx-auto px-6 py-4 h-full flex flex-col">
                 <div className="flex justify-between items-center pt-16">
                      <LanguageSwitcher />
                 </div>
-                <nav className="flex flex-col items-center justify-center flex-grow space-y-8 text-center">
-                    <button onClick={() => handleAnchorLink('#products')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.products}</button>
-                    <button onClick={() => handleNav('science')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.science}</button>
-                    <button onClick={() => handleNav('innovation')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.innovation}</button>
-                    <button onClick={() => handleNav('faq')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.faq}</button>
-                    <button onClick={handleContactClick} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.contact}</button>
-                    <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm text-lg mt-8">
+                <nav className="flex flex-col items-center justify-center flex-grow space-y-8 text-center" aria-label="Mobile main navigation">
+                    <button onClick={() => handleAnchorLink('#products')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</button>
+                    <button onClick={() => handleNav('science')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button>
+                    <button onClick={() => handleNav('innovation')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button>
+                    <button onClick={() => handleNav('faq')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button>
+                    <button onClick={handleContactClick} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button>
+                    <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm text-lg mt-8" aria-label={t.navigation.requestSamples}>
                         {t.navigation.requestSamples}
                     </a>
                 </nav>
@@ -99,6 +149,10 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
                             <div 
                                 className="cursor-pointer"
                                 onClick={() => handleNav('landing')}
+                                role="button"
+                                tabIndex={0}
+                                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleNav('landing')}
+                                aria-label="Go to homepage"
                             >
                                 <img 
                                     src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp" 
@@ -108,23 +162,23 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
                             </div>
 
                             {/* Desktop Nav */}
-                            <nav className="hidden md:flex items-center space-x-8">
-                                <button onClick={() => handleAnchorLink('#products')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.products}</button>
-                                <button onClick={() => handleNav('science')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.science}</button>
-                                <button onClick={() => handleNav('innovation')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.innovation}</button>
-                                <button onClick={() => handleNav('faq')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.faq}</button>
-                                <button onClick={handleContactClick} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">{t.navigation.contact}</button>
+                            <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
+                                <button onClick={() => handleAnchorLink('#products')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</button>
+                                <button onClick={() => handleNav('science')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button>
+                                <button onClick={() => handleNav('innovation')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button>
+                                <button onClick={() => handleNav('faq')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button>
+                                <button onClick={handleContactClick} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button>
                             </nav>
                             <div className="hidden md:flex items-center space-x-4">
                                 <LanguageSwitcher />
-                                 <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md">
+                                 <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md" aria-label={t.navigation.requestSamples}>
                                     {t.navigation.requestSamples}
                                  </a>
                             </div>
                             
                             {/* Mobile Menu Button */}
                             <div className="md:hidden">
-                                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="z-50 relative w-8 h-8 text-gray-700 focus:outline-none">
+                                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="z-50 relative w-8 h-8 text-gray-700" aria-controls="mobile-menu" aria-expanded={isMenuOpen}>
                                     <span className="sr-only">Open main menu</span>
                                     <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                                         <span aria-hidden="true" className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${isMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`}></span>

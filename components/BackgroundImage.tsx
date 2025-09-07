@@ -8,8 +8,7 @@ interface BackgroundImageProps {
 const BackgroundImage: React.FC<BackgroundImageProps> = ({ imageUrl, altText }) => {
     return (
         <div 
-            role="img"
-            aria-label={altText}
+            aria-hidden="true"
             className="fixed inset-0 z-0 transition-all duration-1000"
         >
             <div

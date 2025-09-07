@@ -10,10 +10,10 @@ const StickyCTA = () => {
             <div className="bg-white/70 p-6 rounded-lg shadow-xl border border-gray-200/50 w-64">
                 <h4 className="font-bold text-lg text-emerald-800/90 mb-4">{t.sciencePageContent.stickyCta.title}</h4>
                 <div className="space-y-3">
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Data Sheet" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all">
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Data Sheet" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all" aria-label={t.sciencePageContent.stickyCta.dataSheetButton}>
                         {t.sciencePageContent.stickyCta.dataSheetButton}
                     </a>
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Demo" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all">
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Demo" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all" aria-label={t.sciencePageContent.stickyCta.demoButton}>
                         {t.sciencePageContent.stickyCta.demoButton}
                     </a>
                 </div>
@@ -41,7 +41,7 @@ const ScienceBehindPage: React.FC<ScienceBehindPageProps> = ({ heroBannerUrl }) 
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
-                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center text-on-image-hero">
                         <h1 className="text-4xl md:text-6xl font-bold text-emerald-900/90 brand-font mb-4">{hero.title}</h1>
                         <p className="text-lg md:text-xl mx-auto text-gray-700/90">{hero.subtitle}</p>
                     </div>

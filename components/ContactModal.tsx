@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 
 interface ContactModalProps {
@@ -15,6 +15,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
     const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+    const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
@@ -31,6 +32,44 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             document.body.style.overflow = 'auto';
         };
     }, [isOpen, onClose]);
+
+    // Focus trapping useEffect
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const modalElement = modalRef.current;
+        if (!modalElement || submitStatus === 'success') return;
+
+        const focusableElements = modalElement.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        // Set initial focus on the close button
+        firstElement?.focus();
+
+        const handleTabKeyPress = (e: KeyboardEvent) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) { // Shift+Tab
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        };
+
+        modalElement.addEventListener('keydown', handleTabKeyPress);
+        return () => {
+            modalElement.removeEventListener('keydown', handleTabKeyPress);
+        };
+    }, [isOpen, submitStatus]);
 
     useEffect(() => {
         if(isOpen) {
@@ -92,6 +131,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
     return (
         <div 
+            ref={modalRef}
             className="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 animate-fade-in"
             onClick={onClose}
             role="dialog"

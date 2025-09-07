@@ -15,7 +15,7 @@ const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({ src, alt, className
                 className="w-full h-full object-cover" 
                 onError={(e) => { e.currentTarget.style.display = 'none'; }} 
             />
-            <span className="absolute text-gray-500 font-medium text-center p-2 select-none pointer-events-none">{alt}</span>
+            <span aria-hidden="true" className="absolute text-gray-500 font-medium text-center p-2 select-none pointer-events-none">{alt}</span>
         </div>
     );
 };

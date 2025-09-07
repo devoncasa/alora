@@ -10,31 +10,83 @@ import BackgroundImage from './components/BackgroundImage';
 import ContactModal from './components/ContactModal';
 import CookieConsentBanner from './components/CookieConsentBanner';
 import { BACKGROUND_IMAGES, HERO_SECTION_BANNERS } from './constants';
-import { ProductDetailData } from './types';
+import { ProductDetailData, PageSeoData, SeoData } from './types';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { useLanguage } from './hooks/useLanguage';
 import { initializeAnalytics } from './utils/analytics';
 
-const updateJsonLd = (data: object | null) => {
-    const scriptId = 'json-ld-structured-data';
-    let scriptTag = document.getElementById(scriptId) as HTMLScriptElement | null;
+// --- SEO & Structured Data Configuration ---
+const SITE_URL = 'https://alora.bio';
+const SITE_HANDLE = '@AloraBio';
+const DEFAULT_OG_IMAGE = 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-og-image.webp';
+const ORGANIZATION_DATA = {
+    '@type': 'Organization',
+    name: 'Alora Biotechnology',
+    url: SITE_URL,
+    logo: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp',
+    sameAs: [
+        'https://www.linkedin.com/company/alora-biotechnology',
+        'https://twitter.com/AloraBio'
+    ]
+};
 
-    if (!data) {
-        if (scriptTag) {
-            scriptTag.remove();
+/**
+ * Manages all head tags for SEO, Open Graph, Twitter Cards, and JSON-LD.
+ * Creates, updates, or removes tags based on the provided data.
+ */
+const updateHeadTags = (
+    title: string,
+    canonicalPath: string,
+    hreflang: { en: string; th: string },
+    metaTags: { [key: string]: string },
+    jsonLdData: object
+) => {
+    // 1. Update Title
+    document.title = title;
+
+    // 2. Manage <link> tags (canonical, hreflang)
+    const updateLink = (rel: string, href: string, hreflangAttr?: string) => {
+        const selector = hreflangAttr ? `link[rel="${rel}"][hreflang="${hreflangAttr}"]` : `link[rel="${rel}"]`;
+        let link = document.head.querySelector(selector) as HTMLLinkElement | null;
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = rel;
+            if (hreflangAttr) link.setAttribute('hreflang', hreflangAttr);
+            document.head.appendChild(link);
         }
-        return;
-    }
+        link.href = href;
+    };
 
+    updateLink('canonical', `${SITE_URL}${canonicalPath}`);
+    updateLink('alternate', `${SITE_URL}${hreflang.en}`, 'en');
+    updateLink('alternate', `${SITE_URL}${hreflang.th}`, 'th');
+    updateLink('alternate', `${SITE_URL}${hreflang.en}`, 'x-default');
+
+    // 3. Manage <meta> tags
+    Object.entries(metaTags).forEach(([key, content]) => {
+        const isOgOrTwitter = key.startsWith('og:') || key.startsWith('twitter:');
+        const selector = isOgOrTwitter ? `meta[property="${key}"]` : `meta[name="${key}"]`;
+        let meta = document.head.querySelector(selector) as HTMLMetaElement | null;
+        if (!meta) {
+            meta = document.createElement('meta');
+            if (isOgOrTwitter) meta.setAttribute('property', key);
+            else meta.name = key;
+            document.head.appendChild(meta);
+        }
+        meta.content = content;
+    });
+
+    // 4. Manage JSON-LD
+    let scriptTag = document.getElementById('json-ld-structured-data') as HTMLScriptElement | null;
     if (!scriptTag) {
         scriptTag = document.createElement('script');
-        scriptTag.id = scriptId;
+        scriptTag.id = 'json-ld-structured-data';
         scriptTag.type = 'application/ld+json';
         document.head.appendChild(scriptTag);
     }
-    
-    scriptTag.textContent = JSON.stringify(data);
+    scriptTag.textContent = JSON.stringify(jsonLdData, null, 2);
 };
+
 
 const AppContent: React.FC = () => {
     const [page, setPage] = useState('landing');
@@ -58,72 +110,129 @@ const AppContent: React.FC = () => {
     const productDetailData: ProductDetailData | undefined = selectedProduct ? t.data.productDetails.find(p => p.name === selectedProduct) : undefined;
 
     useEffect(() => {
-        const metaDescTag = document.querySelector('meta[name="description"]');
-        const metaKeywordsTag = document.querySelector('meta[name="keywords"]');
-        
-        const getSeoData = (): { title: string; description: string; keywords: string; } => {
-            if (productDetailData?.seo) {
-                return productDetailData.seo;
+        // --- 1. Get SEO Data ---
+        const getSeoData = (): { seo: SeoData | PageSeoData; path: string; ogType: 'website' | 'product' } => {
+            if (productDetailData) {
+                const path = language === 'th' ? `/th/products/${productDetailData.slug}` : `/products/${productDetailData.slug}`;
+                return { seo: productDetailData.seo, path, ogType: 'product' };
             }
+            let pageSeoData: PageSeoData;
+            let path: string;
             switch (page) {
                 case 'science':
-                    return t.seo.science;
+                    pageSeoData = t.seo.science;
+                    path = language === 'th' ? '/th/science' : '/science';
+                    break;
                 case 'innovation':
-                    return t.seo.innovation;
+                    pageSeoData = t.seo.innovation;
+                    path = language === 'th' ? '/th/innovation' : '/innovation';
+                    break;
                 case 'faq':
-                    return t.seo.faq;
+                    pageSeoData = t.seo.faq;
+                    path = language === 'th' ? '/th/faq' : '/faq';
+                    break;
                 case 'landing':
                 default:
-                    return t.seo.landing;
+                    pageSeoData = t.seo.landing;
+                    path = language === 'th' ? '/th' : '/';
+                    break;
             }
+            return { seo: pageSeoData, path, ogType: 'website' };
         };
 
-        const { title, description, keywords } = getSeoData();
+        const { seo, path, ogType } = getSeoData();
 
-        document.title = title;
-        if (metaDescTag) {
-            metaDescTag.setAttribute('content', description);
-        }
-        if (metaKeywordsTag) {
-            metaKeywordsTag.setAttribute('content', keywords);
-        }
+        // --- 2. Process Keywords ---
+        const processKeywords = (arr: string[] = [], maxLength: number = 100): string[] => {
+            const cleaned = arr.map(k => k.toLowerCase().trim()).filter(Boolean);
+            return [...new Set(cleaned)].slice(0, maxLength);
+        };
         
+        const allKeywords = processKeywords(seo.keywords);
+        const aiKeywords = processKeywords(seo.aiKeywords);
+        const aboutKeywords = processKeywords(seo.about);
+        const mentionsKeywords = processKeywords(seo.mentions);
+
+        // --- 3. Construct Meta Tags ---
+        const metaTags: { [key: string]: string } = {
+            'description': seo.description,
+            'keywords': allKeywords.join(', '),
+            'robots': seo.robots || 'index, follow',
+            // AI-driven tags
+            'ai-keywords': aiKeywords.slice(0, 20).join(', '),
+            'about': aboutKeywords.slice(0, 20).join(', '),
+            'mentions': mentionsKeywords.slice(0, 20).join(', '),
+            // Open Graph
+            'og:title': seo.title,
+            'og:description': seo.description,
+            'og:type': ogType,
+            'og:url': `${SITE_URL}${path}`,
+            'og:image': seo.image || productDetailData?.images.hero || DEFAULT_OG_IMAGE,
+            'og:site_name': 'Alora Biofilm',
+            'og:locale': language === 'th' ? 'th_TH' : 'en_US',
+            // Twitter Card
+            'twitter:card': 'summary_large_image',
+            'twitter:site': SITE_HANDLE,
+            'twitter:title': seo.title,
+            'twitter:description': seo.description,
+            'twitter:image': seo.image || productDetailData?.images.hero || DEFAULT_OG_IMAGE,
+        };
+
+        // --- 4. Get JSON-LD Data ---
         const getJsonLdData = () => {
             if (productDetailData) {
                 return {
                     '@context': 'https://schema.org',
-                    '@type': productDetailData.schemaType,
+                    '@type': 'Product',
+                    '@id': `${SITE_URL}${path}`,
                     name: productDetailData.name,
                     description: productDetailData.seo.description,
-                    brand: {
-                        '@type': 'Brand',
-                        name: 'Alora Biofilm'
-                    },
+                    sku: productDetailData.sku,
+                    gtin12: productDetailData.gtin,
+                    brand: productDetailData.brand,
+                    image: productDetailData.images.hero,
+                    offers: productDetailData.offers,
+                    aggregateRating: productDetailData.aggregateRating,
+                    ...(productDetailData.faqs.length > 0 && {
+                        mainEntity: productDetailData.faqs.map(faq => ({
+                            '@type': 'Question',
+                            name: faq.q,
+                            acceptedAnswer: {
+                                '@type': 'Answer',
+                                text: faq.a
+                            }
+                        }))
+                    })
                 };
             }
-
-            const commonData = {
+            // Fallback to Organization + Website schema
+            return {
                 '@context': 'https://schema.org',
-                '@type': 'WebSite',
-                name: 'Alora Biofilm',
+                '@graph': [
+                    ORGANIZATION_DATA,
+                    {
+                        '@type': 'WebSite',
+                        url: SITE_URL,
+                        name: 'Alora Biofilm',
+                        publisher: { '@id': ORGANIZATION_DATA.url },
+                        potentialAction: {
+                            '@type': 'SearchAction',
+                            target: `${SITE_URL}/search?q={search_term_string}`,
+                            'query-input': 'required name=search_term_string',
+                        },
+                    },
+                ],
             };
-
-            switch (page) {
-                case 'science':
-                    return { ...commonData, name: t.seo.science.title };
-                case 'innovation':
-                     return { ...commonData, name: t.seo.innovation.title };
-                case 'faq':
-                    return { ...commonData, name: t.seo.faq.title };
-                case 'landing':
-                default:
-                    return { ...commonData, name: t.seo.landing.title };
-            }
         };
+
+        const jsonLdData = getJsonLdData();
+        const hreflang = 'hreflang' in seo ? seo.hreflang : { en: '/', th: '/th' };
         
-        updateJsonLd(getJsonLdData());
-        
-    }, [page, productDetailData, t]); // Dependencies cover changes in page, product, and language
+        // --- 5. Update Head ---
+        updateHeadTags(seo.title, path, hreflang, metaTags, jsonLdData);
+
+    }, [page, productDetailData, t, language]);
+
 
     const renderPage = () => {
         if (productDetailData) {

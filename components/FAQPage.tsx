@@ -8,6 +8,7 @@ interface FAQItemProps {
 const FAQItem: React.FC<FAQItemProps> = ({ faq }) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
+    const contentId = `faq-answer-${faq.q.replace(/\s+/g, '-').toLowerCase().slice(0, 30)}`;
 
     const toggleOpen = () => {
         setIsOpen(!isOpen);
@@ -19,6 +20,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ faq }) => {
                 onClick={toggleOpen}
                 className="flex justify-between items-center w-full py-5 text-left"
                 aria-expanded={isOpen}
+                aria-controls={contentId}
             >
                 <h3 className="text-lg font-medium text-gray-800/90">{faq.q}</h3>
                 <svg
@@ -27,14 +29,17 @@ const FAQItem: React.FC<FAQItemProps> = ({ faq }) => {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
                 >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div
+                id={contentId}
                 ref={contentRef}
                 className="overflow-hidden transition-all duration-500 ease-in-out"
                 style={{ maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : '0px' }}
+                hidden={!isOpen}
             >
                 <div className="pb-5 pr-6">
                     <p className="text-gray-600/90">{faq.a}</p>
@@ -62,7 +67,7 @@ const FAQPage: React.FC<FAQPageProps> = ({ heroBannerUrl }) => {
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
-                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center text-on-image-hero">
                         <h1 className="text-4xl md:text-6xl font-bold text-emerald-900/90 brand-font mb-4">{hero.title}</h1>
                         <p className="text-lg md:text-xl mx-auto text-gray-700/90">{hero.subtitle}</p>
                     </div>

@@ -88,18 +88,20 @@ const CookieConsentBanner: React.FC = () => {
                 <p className="text-sm text-gray-700/90 mb-4">
                     {t.cookieConsent.message}
                     {' '}
-                    <button onClick={() => { /* Navigate to privacy policy page */ }} className="underline text-emerald-600/90 hover:text-emerald-800/90">{t.cookieConsent.learnMore}</button>
+                    <button onClick={() => { /* Navigate to privacy policy page */ }} className="underline text-emerald-600/90 hover:text-emerald-800/90" aria-label="Learn more about our cookie policy">{t.cookieConsent.learnMore}</button>
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                     <button
                         onClick={handleAccept}
                         className="w-full sm:w-auto flex-1 bg-emerald-600/90 text-white/90 px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm"
+                        aria-label="Accept the use of cookies"
                     >
                         {t.cookieConsent.accept}
                     </button>
                     <button
                         onClick={handleDecline}
                         className="w-full sm:w-auto flex-1 bg-gray-200/90 text-gray-700/90 px-5 py-2 rounded-md font-semibold hover:bg-gray-300 transition-all"
+                        aria-label="Decline the use of cookies"
                     >
                         {t.cookieConsent.decline}
                     </button>

@@ -25,11 +25,11 @@ const Footer: React.FC<FooterProps> = ({ setPage, openContactModal }) => {
                         <div>
                             <h4 className="font-bold text-lg mb-4 text-white">{t.footer.explore}</h4>
                             <ul className="space-y-2 text-sm">
-                                <li><a href="#products" onClick={() => setPage('landing')} className="text-gray-400 hover:text-white transition-colors">{t.navigation.products}</a></li>
-                                <li><button onClick={() => setPage('science')} className="text-gray-400 hover:text-white transition-colors text-left">{t.navigation.science}</button></li>
-                                <li><button onClick={() => setPage('innovation')} className="text-gray-400 hover:text-white transition-colors text-left">{t.navigation.innovation}</button></li>
-                                <li><button onClick={() => setPage('faq')} className="text-gray-400 hover:text-white transition-colors text-left">{t.navigation.faq}</button></li>
-                                 <li><button onClick={openContactModal} className="text-gray-400 hover:text-white transition-colors text-left">{t.navigation.contact}</button></li>
+                                <li><a href="#products" onClick={() => setPage('landing')} className="text-gray-400 hover:text-white transition-colors" aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</a></li>
+                                <li><button onClick={() => setPage('science')} className="text-gray-400 hover:text-white transition-colors text-left" aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button></li>
+                                <li><button onClick={() => setPage('innovation')} className="text-gray-400 hover:text-white transition-colors text-left" aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button></li>
+                                <li><button onClick={() => setPage('faq')} className="text-gray-400 hover:text-white transition-colors text-left" aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button></li>
+                                 <li><button onClick={openContactModal} className="text-gray-400 hover:text-white transition-colors text-left" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button></li>
                             </ul>
                         </div>
                         
@@ -37,8 +37,8 @@ const Footer: React.FC<FooterProps> = ({ setPage, openContactModal }) => {
                          <div>
                             <h4 className="font-bold text-lg mb-4 text-white">{t.footer.legal}</h4>
                             <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.privacy}</a></li>
-                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.terms}</a></li>
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label={`View our ${t.footer.privacy}`}>{t.footer.privacy}</a></li>
+                                <li><a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label={`View our ${t.footer.terms}`}>{t.footer.terms}</a></li>
                             </ul>
                         </div>
 
@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ setPage, openContactModal }) => {
                                 <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors"><LinkedInIcon /></a>
                                 <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-white transition-colors"><TwitterIcon /></a>
                             </div>
-                             <a href="mailto:medical.affairs@alora.bio" className="text-sm text-gray-400 hover:text-white">medical.affairs@alora.bio</a>
+                             <a href="mailto:medical.affairs@alora.bio" className="text-sm text-gray-400 hover:text-white" aria-label="Email Medical Affairs">medical.affairs@alora.bio</a>
                         </div>
 
                     </div>

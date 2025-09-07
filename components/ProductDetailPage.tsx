@@ -49,8 +49,8 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
-                    <div className="lg:col-start-2 lg:col-span-3 px-6">
-                        <button onClick={() => setSelectedProduct(null)} className="text-sm font-semibold text-emerald-600/90 hover:text-emerald-800 mb-4">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-on-image-hero">
+                        <button onClick={() => setSelectedProduct(null)} className="text-sm font-semibold text-emerald-600/90 hover:text-emerald-800 mb-4" aria-label={t.productDetailPageContent.backButton}>
                             {t.productDetailPageContent.backButton}
                         </button>
                         <h1 className="text-4xl md:text-5xl font-bold text-emerald-900/90 brand-font mb-4">{name}</h1>
@@ -133,7 +133,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                                     <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.downloads}</h3>
                                     <div className="space-y-3">
                                         {downloads.map(item => (
-                                            <a key={item.name} href={item.link} className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all text-sm">
+                                            <a key={item.name} href={item.link} className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all text-sm" aria-label={`Download ${item.name}`}>
                                                 {item.name}
                                             </a>
                                         ))}

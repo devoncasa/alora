@@ -10,10 +10,10 @@ const StickyCTA = () => {
             <div className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20 w-64 transition-all duration-300 hover:shadow-2xl">
                 <h4 className="font-bold text-lg text-emerald-800/90 mb-4">{t.innovationPageContent.stickyCta.title}</h4>
                 <div className="space-y-3">
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Tech Dossier" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg">
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Tech Dossier" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg" aria-label={t.innovationPageContent.stickyCta.dossierButton}>
                         {t.innovationPageContent.stickyCta.dossierButton}
                     </a>
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Clinical Samples" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all">
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Clinical Samples" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all" aria-label={t.innovationPageContent.stickyCta.samplesButton}>
                         {t.innovationPageContent.stickyCta.samplesButton}
                     </a>
                 </div>
@@ -52,7 +52,7 @@ const InnovationPage: React.FC<InnovationPageProps> = ({ heroBannerUrl }) => {
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-50/80 to-green-50/80"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
-                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center">
+                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-center text-on-image-hero">
                         <h1 className="text-4xl md:text-6xl font-bold text-emerald-900/90 brand-font mb-4">{hero.title}</h1>
                         <p className="text-lg md:text-xl mx-auto text-gray-700/90 font-light">{hero.subtitle}</p>
                     </div>
@@ -95,9 +95,14 @@ const InnovationPage: React.FC<InnovationPageProps> = ({ heroBannerUrl }) => {
                         <p className="text-gray-700/90 mb-8 text-center max-w-3xl mx-auto">{sections.performance.text}</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
                             {sections.performance.kpis.map(kpi => (
-                                <div key={kpi.title} className="p-6 bg-white border border-gray-200/50 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-default flex flex-col">
-                                    <p className="font-semibold text-emerald-800/90 text-sm md:text-base mb-2">{kpi.title}</p>
-                                    <p className="text-gray-600/90 text-xs flex-grow">{kpi.description}</p>
+                                <div 
+                                    key={kpi.title} 
+                                    className="p-6 bg-white border border-gray-200/50 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-default flex flex-col"
+                                    tabIndex={0}
+                                    aria-label={`${kpi.title}: ${kpi.description}`}
+                                >
+                                    <p className="font-semibold text-emerald-800/90 text-sm md:text-base mb-2" aria-hidden="true">{kpi.title}</p>
+                                    <p className="text-gray-600/90 text-xs flex-grow" aria-hidden="true">{kpi.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -117,7 +122,7 @@ const InnovationPage: React.FC<InnovationPageProps> = ({ heroBannerUrl }) => {
                              </ul>
                         </div>
                          <div className="text-center mt-12">
-                             <a href="mailto:medical.affairs@alora.bio?subject=Innovation Session Inquiry" className="bg-emerald-600/90 text-white/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-block">
+                             <a href="mailto:medical.affairs@alora.bio?subject=Innovation Session Inquiry" className="bg-emerald-600/90 text-white/90 px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 inline-block" aria-label={sections.customization.button}>
                                 {sections.customization.button}
                              </a>
                          </div>

@@ -19,6 +19,7 @@ interface PersuasionCardProps {
 const PersuasionCard: React.FC<PersuasionCardProps> = ({ cardData, imageAlt }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
+    const contentId = `persuasion-card-content-${cardData.title.replace(/\s+/g, '-').toLowerCase()}`;
 
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
@@ -38,9 +39,11 @@ const PersuasionCard: React.FC<PersuasionCardProps> = ({ cardData, imageAlt }) =
             </ul>
             
             <div
+                id={contentId}
                 ref={contentRef}
                 className="overflow-hidden transition-all duration-700 ease-in-out"
                 style={{ maxHeight: isExpanded ? `${contentRef.current?.scrollHeight}px` : '0px' }}
+                hidden={!isExpanded}
             >
                 <div className="mt-4 pt-4 border-t border-emerald-200/50">
                     <img src={cardData.expandedContent.imageSrc} alt={imageAlt} className="rounded-lg mb-4 w-full object-cover shadow-md" />
@@ -48,7 +51,13 @@ const PersuasionCard: React.FC<PersuasionCardProps> = ({ cardData, imageAlt }) =
                 </div>
             </div>
 
-            <button onClick={toggleExpand} className="font-semibold text-emerald-600/90 hover:text-emerald-800 transition-colors mt-auto pt-4 text-left">
+            <button 
+                onClick={toggleExpand} 
+                className="font-semibold text-emerald-600/90 hover:text-emerald-800 transition-colors mt-auto pt-4 text-left"
+                aria-expanded={isExpanded}
+                aria-controls={contentId}
+                aria-label={`${isExpanded ? 'Collapse' : 'Expand'} details about ${cardData.title}`}
+            >
                 {isExpanded ? cardData.collapseLink : cardData.expandLink}
             </button>
         </div>

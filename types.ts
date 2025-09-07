@@ -23,15 +23,23 @@ export type ClinicalSpec = {
     value: string;
 };
 
+export type SeoData = {
+    title: string;
+    description: string;
+    keywords: string[];
+    aiKeywords?: string[];
+    about?: string[];
+    mentions?: string[];
+    image?: string;
+    robots?: string;
+};
+
 export type ProductDetailData = {
     name: string;
+    slug: string;
     schemaType: 'MedicalDevice' | 'Product';
     hero: string;
-    seo: {
-        title: string;
-        description: string;
-        keywords: string;
-    };
+    seo: SeoData;
     whatItIs: string;
     howItWorks: string[];
     clinicalSpecs: ClinicalSpec[];
@@ -42,6 +50,29 @@ export type ProductDetailData = {
     faqs: { q: string; a: string }[];
     downloads: { name: string; link: string }[];
     images: { hero: string; macro: string; };
+    // Schema.org specific fields
+    brand: { '@type': 'Brand'; name: string; };
+    sku: string;
+    gtin?: string;
+    offers: {
+        '@type': 'Offer';
+        priceCurrency: string;
+        price: string;
+        availability: string; // e.g., 'https://schema.org/InStock'
+        seller: {
+            '@type': 'Organization';
+            name: string;
+        };
+    };
+    aggregateRating?: {
+        '@type': 'AggregateRating';
+        ratingValue: string;
+        reviewCount: string;
+    };
+};
+
+export type PageSeoData = SeoData & {
+    hreflang: { en: string; th: string; };
 };
 
 export interface AloraDataType {
@@ -211,10 +242,10 @@ export interface AloraDataType {
     sustainabilitySection: { title: string; text: string; cta: string; };
     supportBand: { title: string; cta: string; };
     seo: {
-        landing: { title: string; description: string; keywords: string; };
-        science: { title: string; description: string; keywords: string; };
-        innovation: { title: string; description: string; keywords: string; };
-        faq: { title: string; description: string; keywords: string; };
+        landing: PageSeoData;
+        science: PageSeoData;
+        innovation: PageSeoData;
+        faq: PageSeoData;
     };
     contactModal: {
         title: string;
