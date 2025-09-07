@@ -4,7 +4,9 @@ export type Language = 'en' | 'th';
 
 export type ProductCardData = {
     name: string;
-    value: string;
+    description1: string;
+    description2: string;
+    imageSrc: string;
 };
 
 export type FeatureCardData = {
@@ -23,6 +25,7 @@ export type ClinicalSpec = {
 
 export type ProductDetailData = {
     name: string;
+    schemaType: 'MedicalDevice' | 'Product';
     hero: string;
     seo: {
         title: string;
@@ -54,6 +57,11 @@ export interface AloraDataType {
         sheetMask: string;
         innovationPlatform: string;
         innovationMicrograph: string;
+        customThickness: string;
+        drugElutionGraph: string;
+        innovationVennDiagram: string;
+        molecularRender1: string;
+        molecularRender2: string;
         productHero: (name: string) => string;
         productMacro: (name: string) => string;
         heroBanner: string;
@@ -61,6 +69,9 @@ export interface AloraDataType {
         aloraPlantation: string;
         featureHealing: string;
         featureDelivery: string;
+        introVisual1: string;
+        introVisual2: string;
+        introVisual3: string;
     };
     data: {
         productCards: ProductCardData[];
@@ -159,9 +170,9 @@ export interface AloraDataType {
         hero: { title: string; subtitle: string; };
         sections: {
             platform: { title: string; text: string; items: string[]; };
-            enables: { title: string; items: { title: string; text: string; }[]; };
-            performance: { title: string; text: string; kpis: string[]; };
-            customization: { title: string; items: string[]; button: string; };
+            enables: { title: string; items: { title: string; text: string; icon: React.ReactNode; }[]; };
+            performance: { title: string; text: string; kpis: { title: string; description: string; }[]; };
+            customization: { title: string; text: string; items: string[]; button: string; };
         };
     };
     faqPageContent: {
@@ -222,6 +233,12 @@ export interface AloraDataType {
             emailInvalid: string;
             messageRequired: string;
         };
+    };
+    cookieConsent: {
+        message: string;
+        accept: string;
+        decline: string;
+        learnMore: string;
     };
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ISOIcon, CEIcon, CrueltyFreeIcon, BiodegradableIcon, SterileIcon, HealingIcon, DeliveryIcon } from '../constants';
+import { ISOIcon, CEIcon, CrueltyFreeIcon, BiodegradableIcon, SterileIcon, HealingIcon, DeliveryIcon, WoundCareIcon, DrugDeliveryIcon, SkincareIcon } from '../constants';
 import type { AloraDataType } from '../types';
 
 export const enContent: AloraDataType = {
@@ -13,8 +13,13 @@ export const enContent: AloraDataType = {
         woundFilm: 'Close-up of the Alora wound film applied to skin',
         oralFilm: 'Illustration of an oral patch adhering to the mucosa',
         sheetMask: 'Person wearing the transparent Alora facial sheet mask',
-        innovationPlatform: 'Infographic displaying the versatility of the Alora technology platform',
-        innovationMicrograph: 'High-magnification view of the biofilm structure',
+        innovationPlatform: 'Dynamic 3D infographic showing the Aloe × Pectin dual-helix structure',
+        innovationMicrograph: 'Animated GIF of pectin cross-linking under Ca²⁺ ions',
+        customThickness: 'Diagram showing custom thickness options for Alora films',
+        drugElutionGraph: 'Graph showing tunable drug elution profiles over time',
+        innovationVennDiagram: 'Venn Diagram illustrating the synergy between Aloe and Pectin properties for the innovation platform',
+        molecularRender1: '3D molecular render of the Alora biopolymer structure',
+        molecularRender2: '3D render illustrating API integration within the Alora polymer matrix',
         productHero: (name: string) => `Hero image for ${name}`,
         productMacro: (name: string) => `Macro close-up shot of ${name} texture`,
         heroBanner: 'Hero section banner with an abstract scientific background',
@@ -22,15 +27,48 @@ export const enContent: AloraDataType = {
         aloraPlantation: 'Alora aloe vera plantation',
         featureHealing: 'Micrograph showing cell regeneration',
         featureDelivery: 'Diagram showing controlled release mechanism',
+        introVisual1: 'Infographic showing Aloe × Pectin synergy',
+        introVisual2: 'High-magnification image of biofilm structure',
+        introVisual3: 'Model applying transparent biofilm skincare mask',
     },
     data: {
         productCards: [
-            { name: 'Alora Clinical Wound Film', value: 'A sterile, bioactive film for acute and chronic wounds, promoting moist healing.' },
-            { name: 'Alora Oral Mucoadhesive Patch', value: 'A flexible patch for oral lesions, providing protection and controlled release.' },
-            { name: 'Alora Ocular Delivery Film', value: 'A transparent, lubricating film for dry eye and post-surgical care.' },
-            { name: 'Alora Pro-Collagen Skincare Mask', value: 'A luxury facial mask for deep hydration and peptide delivery.' },
-            { name: 'Alora Post-Procedure Calming Film', value: 'A soothing film to reduce redness and inflammation after cosmetic procedures.' },
-            { name: 'Alora Bio-Active Scar Sheet', value: 'A hydrating sheet to improve the appearance of new and old scars.' },
+            { 
+                name: 'Alora Clinical Wound Film', 
+                description1: 'A sterile, transparent wound dressing engineered from Aloe polysaccharides and citrus pectin. Provides a moist healing environment while protecting against external contaminants.',
+                description2: 'Clinically proven to accelerate closure, reduce scarring, and minimize pain. Designed for hospitals, clinics, and home wound care.',
+                imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-wound-film-4x3.webp'
+            },
+            { 
+                name: 'Alora Oral Mucoadhesive Patch', 
+                description1: 'A dissolvable patch that adheres to oral mucosa, forming a protective barrier over ulcers and lesions. Aloe vera soothes while pectin provides adhesion.',
+                description2: 'Ideal for aphthous ulcers, denture irritation, and oral inflammation. Ensures targeted delivery and comfort.',
+                imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-oral-patch-4x3.webp'
+            },
+            { 
+                name: 'Alora Ocular Delivery Film',
+                description1: 'A micro-thin, sterile ocular film designed for sustained hydration and controlled release of ophthalmic actives.',
+                description2: 'Supports patients with dry eye, post-LASIK recovery, and corneal protection. Transparent, comfortable, and easy to apply.',
+                imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-ocular-film-4x3.webp'
+            },
+            { 
+                name: 'Alora Pro-Collagen Skincare Mask',
+                description1: 'A luxury hydrogel mask infused with Vitamin C, HA, and peptides. Designed as a “second skin” for maximum absorption.',
+                description2: 'Provides deep hydration, brightening, and post-procedure soothing. Dermatologist-tested, fragrance-free, and sensitive-skin friendly.',
+                imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-collagen-mask-4x3.webp'
+            },
+            { 
+                name: 'Alora Post-Procedure Calming Film',
+                description1: 'A cooling, hydrating film to be applied immediately after procedures like microneedling or laser therapy.',
+                description2: 'Reduces redness, restores comfort, and accelerates skin recovery. Suitable for clinics and professional cosmetic care.',
+                imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-calming-film-4x3.webp'
+            },
+            { 
+                name: 'Alora Bio-Active Scar Sheet',
+                description1: 'A discreet, self-adhesive sheet that hydrates and softens scar tissue. Designed to reduce hypertrophy and improve texture.',
+                description2: 'Effective for surgical scars, burns, and acne marks. Comfortable to wear up to 24 hours daily.',
+                imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-scar-sheet-4x3.webp'
+            },
         ],
         featureCards: [
             {
@@ -65,6 +103,7 @@ export const enContent: AloraDataType = {
         productDetails: [
            {
                 name: 'Alora Clinical Wound Film',
+                schemaType: 'MedicalDevice',
                 hero: 'An advanced, sterile, dual-biopolymer film designed to accelerate healing in a wide range of acute and chronic wounds by creating an optimal moist micro-environment.',
                 seo: {
                     title: 'Alora Clinical Wound Film | Alora Biofilm',
@@ -87,9 +126,9 @@ export const enContent: AloraDataType = {
                     { label: 'Absorbency', value: 'High (Up to 15x its weight)' },
                 ],
                 indications: ['Pressure ulcers (Stage I-IV)', 'Diabetic foot ulcers', 'Venous leg ulcers', 'Partial and full-thickness wounds', 'Donor sites and skin grafts', 'Post-operative surgical wounds', 'First and second-degree burns'],
-                howToUse: '1. Cleanse wound per protocol. 2. Select film size to overlap wound margin by 2cm. 3. Apply film directly to wound bed. 4. Secure with secondary dressing if required. 5. Change every 3-7 days or when saturated.',
-                options: ['Standard sizes', 'Fenestrated versions', 'Antimicrobial (Silver/PHMB) versions'],
-                safety: ['ISO 10993 Biocompatible', 'Non-cytotoxic', 'Low-sensitivity potential', 'Latex-free'],
+                howToUse: '1. Cleanse wound area according to standard clinical protocol and pat surrounding skin dry. 2. Select a film size that provides at least a 2cm (1-inch) overlap onto the healthy skin around the wound margin. 3. Remove the film from the sterile pouch. Apply the film directly to the wound bed, ensuring smooth contact. 4. If required, secure the film with a secondary dressing like a transparent film, tape, or light bandage, especially on high-friction areas. 5. The film can be left in place for up to 7 days, or changed when the exudate reaches the film edge.',
+                options: ['Available in various standard sizes (e.g., 5x5cm, 10x10cm, 15x15cm). Fenestrated versions are available for draining wounds. Custom formulations with antimicrobial agents (Silver, PHMB) can be developed for specific clinical needs.'],
+                safety: ['Fully biocompatible per ISO 10993 testing standards for cytotoxicity, sensitization, and intracutaneous reactivity. Terminally sterilized using gamma irradiation. Formulated without latex, parabens, or fragrances to minimize sensitivity potential.'],
                 faqs: [
                     { q: 'Is a secondary dressing required?', a: 'For moderately to highly exudative wounds, a secondary absorbent dressing is recommended to manage excess fluid.' },
                     { q: 'Can it be used on infected wounds?', a: 'The standard film is not indicated for infected wounds. Consider our antimicrobial version under clinical supervision for such cases.' }
@@ -99,12 +138,13 @@ export const enContent: AloraDataType = {
                     { name: 'Download Application Guide (PDF)', link: '#' },
                 ],
                 images: {
-                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-wound-hero.webp',
-                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-wound-macro.webp',
+                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-wound-hero-16x9.webp',
+                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-wound-macro-4x3.webp',
                 }
             },
             {
                 name: 'Alora Oral Mucoadhesive Patch',
+                schemaType: 'MedicalDevice',
                 hero: 'A targeted, dissolvable patch that adheres to oral mucosa, providing a protective barrier and sustained delivery for localized treatment.',
                 seo: {
                     title: 'Alora Oral Mucoadhesive Patch | Alora Biofilm',
@@ -123,19 +163,20 @@ export const enContent: AloraDataType = {
                     { label: 'Adhesion Time', value: '2-6 hours' },
                     { label: 'Dissolution', value: 'Fully dissolvable' },
                 ],
-                indications: ['Aphthous ulcers (canker sores)', 'Oral lichen planus', 'Gingivitis-related inflammation', 'Denture irritation spots'],
-                howToUse: 'Apply the patch to the clean, dry lesion area. Hold gently for 20 seconds. Avoid eating or drinking for 1 hour.',
-                options: ['Different sizes', 'Flavor options', 'With active ingredients (e.g., Lidocaine, Hyaluronic Acid)'],
-                safety: ['Food-grade materials', 'ISO 10993 Biocompatible'],
+                indications: ['For the management of pain and discomfort associated with aphthous ulcers (canker sores), minor oral injuries, denture friction sores, and other non-infected inflammatory lesions of the oral mucosa.'],
+                howToUse: '1. Identify the lesion area. 2. With clean, dry hands, remove a patch from its packaging. 3. Gently dry the lesion with a sterile swab. 4. Apply the patch directly over the lesion and hold gently for 20-30 seconds to ensure adhesion. The patch will absorb moisture and adhere firmly. 5. Avoid eating, drinking, or disturbing the patch for at least 1 hour to allow full adhesion and initial release of soothing agents. The patch will dissolve naturally over several hours.',
+                options: ['Offered in discreet 8mm and 12mm circular shapes. Custom shapes and flavor profiles (e.g., mild mint) are available for partnership opportunities. Formulations can be loaded with active ingredients such as local anesthetics (Lidocaine) or healing promoters (Hyaluronic Acid).'],
+                safety: ['Manufactured with food-grade (Generally Recognized As Safe) materials. Free from common allergens. Undergoes rigorous biocompatibility testing to ensure safety for use on mucosal tissues.'],
                 faqs: [],
                 downloads: [{ name: 'Download Data Sheet (PDF)', link: '#' }],
                 images: {
-                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-oral-hero.webp',
-                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-oral-macro.webp',
+                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-oral-hero-16x9.webp',
+                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-oral-macro-4x3.webp',
                 }
             },
             {
                 name: 'Alora Pro-Collagen Skincare Mask',
+                schemaType: 'Product',
                 hero: 'A luxurious, transparent biofilm sheet mask that delivers a clinical-grade dose of hydration, peptides, and antioxidants for visibly plumper, radiant skin.',
                 seo: {
                     title: 'Alora Pro-Collagen Skincare Mask | Alora Biofilm',
@@ -154,19 +195,20 @@ export const enContent: AloraDataType = {
                     { label: 'Application Time', value: '20-30 minutes' },
                     { label: 'Material', value: 'Biofilm Hydrogel' },
                 ],
-                indications: ['Dehydrated skin', 'Fine lines and wrinkles', 'Dullness and uneven tone', 'Post-procedure soothing'],
-                howToUse: 'Apply to clean, dry face. Leave on for 20-30 minutes. Remove and massage in any remaining serum. Do not rinse.',
-                options: ['Single-use sachets', 'Professional packs'],
-                safety: ['Dermatologist-tested', 'Fragrance-free', 'Hypoallergenic'],
+                indications: ['For anyone seeking an intensive hydration boost, improved skin radiance, and a reduction in the appearance of fine lines. Ideal for use before a special event, as a weekly replenishing treatment, or for calming skin after non-invasive cosmetic procedures.'],
+                howToUse: '1. Begin with a thoroughly cleansed and toned face. 2. Carefully remove the hydrogel mask from its sachet and unfold it. 3. Apply the mask to your face, aligning the cutouts for eyes, nose, and mouth. Smooth out any air bubbles to ensure full contact. 4. Relax for 20-30 minutes. 5. Remove the mask and gently pat any remaining serum into the skin. Do not rinse. Follow with your favorite moisturizer.',
+                options: ['Packaged in convenient, hygienic single-use sachets for home use. Also available in professional back-bar packs for use in clinics and spas as part of facial treatments.'],
+                safety: ['Dermatologist-tested and non-comedogenic. Formulated without parabens, sulfates, phthalates, or artificial fragrances. Suitable for all skin types, including sensitive skin.'],
                 faqs: [],
                 downloads: [{ name: 'Download Product Brochure (PDF)', link: '#' }],
                 images: {
-                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-mask-hero.webp',
-                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-mask-macro.webp',
+                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-mask-hero-16x9.webp',
+                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-mask-macro-4x3.webp',
                 }
             },
             {
                 name: 'Alora Ocular Delivery Film',
+                schemaType: 'MedicalDevice',
                 hero: 'An innovative, transparent ocular film providing sustained lubrication and therapeutic delivery.',
                 seo: {
                     title: 'Alora Ocular Delivery Film | Alora Biofilm',
@@ -176,16 +218,20 @@ export const enContent: AloraDataType = {
                 whatItIs: 'A micro-thin, sterile film of aloe and pectin that dissolves slowly upon insertion into the conjunctival sac.',
                 howItWorks: ['Provides sustained lubrication.', 'Can be loaded with ophthalmic drugs for controlled release.'],
                 clinicalSpecs: [{ label: 'Material', value: 'Ophthalmic-grade Aloe/Pectin' }],
-                indications: ['Dry Eye Syndrome', 'Post-surgical care'],
-                howToUse: 'Place in the lower conjunctival cul-de-sac.',
-                options: ['Various drug payloads'],
-                safety: ['Sterile', 'Biocompatible'],
+                indications: ['Indicated for patients with moderate to severe Dry Eye Syndrome (DED), post-operative lubrication following procedures like LASIK or cataract surgery, and for protecting the corneal surface in cases of exposure keratitis.'],
+                howToUse: '1. Wash hands thoroughly. 2. Using a clean finger, gently pull down the lower eyelid to create a small pocket (the inferior cul-de-sac). 3. Place the thin film into this pocket. 4. Release the eyelid and blink a few times. The film will begin to dissolve, providing a lubricating tear film over several hours.',
+                options: ['Available as a lubricant-only film for general hydration. Can be pre-loaded with a range of ophthalmic APIs (e.g., cyclosporine, antibiotics, anti-inflammatory agents) for targeted, sustained therapeutic delivery, reducing the need for frequent eye drops.'],
+                safety: ['Terminally sterilized to ensure ophthalmic safety. Polymers are ophthalmic-grade and extensively tested for non-irritation. The film is preservative-free, reducing the risk of ocular surface toxicity with long-term use.'],
                 faqs: [],
                 downloads: [],
-                images: { hero: '', macro: '' }
+                images: { 
+                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-ocular-hero-16x9.webp', 
+                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-ocular-macro-4x3.webp' 
+                }
             },
             {
                 name: 'Alora Post-Procedure Calming Film',
+                schemaType: 'Product',
                 hero: 'A sterile, soothing film to accelerate recovery after aesthetic procedures.',
                 seo: {
                     title: 'Alora Post-Procedure Calming Film | Alora Biofilm',
@@ -195,16 +241,20 @@ export const enContent: AloraDataType = {
                 whatItIs: 'A cooling, hydrating film applied immediately after procedures like microneedling or laser resurfacing.',
                 howItWorks: ['Reduces redness and inflammation.', 'Provides a protective, hydrating barrier.'],
                 clinicalSpecs: [{ label: 'Key Ingredient', value: 'High-concentration Aloe Polysaccharide' }],
-                indications: ['Post-laser', 'Post-microneedling', 'Post-chemical peel'],
-                howToUse: 'Apply to treated area for 30-60 minutes.',
-                options: ['Facial masks', 'Custom shapes'],
-                safety: ['Sterile', 'Hypoallergenic'],
+                indications: ['Specifically designed for immediate application after aesthetic procedures such as microneedling, fractional laser resurfacing, chemical peels, or IPL therapy. Helps to rapidly reduce procedure-related redness, heat, and discomfort.'],
+                howToUse: 'For professional use. 1. Immediately following the procedure, gently cleanse the treated area as per protocol. 2. Apply the sterile film, ensuring it fully covers the treated zone. 3. The cooling hydrogel provides immediate relief. Leave in place for 30-60 minutes to significantly reduce inflammation and hydrate the compromised skin barrier.',
+                options: ['Available as sterile, single-use facial masks to fit standard facial contours. Custom shapes for body areas (e.g., décolletage, back) can be developed for specific treatment protocols and device partnerships.'],
+                safety: ['Provided sterile (gamma irradiated) to prevent post-procedure infection risk. The minimalist formulation is designed for compromised skin barriers, free of potential irritants like fragrances, alcohol, and essential oils.'],
                 faqs: [],
                 downloads: [],
-                images: { hero: '', macro: '' }
+                images: { 
+                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-calming-hero-16x9.webp', 
+                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-calming-macro-4x3.webp' 
+                }
             },
             {
                 name: 'Alora Bio-Active Scar Sheet',
+                schemaType: 'MedicalDevice',
                 hero: 'A discreet, hydrating sheet to minimize and improve the appearance of scars.',
                 seo: {
                     title: 'Alora Bio-Active Scar Sheet | Alora Biofilm',
@@ -214,13 +264,16 @@ export const enContent: AloraDataType = {
                 whatItIs: 'A soft, self-adhesive sheet that provides occlusion and hydration to scar tissue.',
                 howItWorks: ['Hydrates the stratum corneum.', 'Softens and flattens hypertrophic and keloid scars.'],
                 clinicalSpecs: [{ label: 'Wear Time', value: 'Up to 24 hours' }],
-                indications: ['Surgical scars', 'Burn scars', 'Acne scars'],
-                howToUse: 'Apply to clean, dry scar. Wear for 12-24 hours daily.',
-                options: ['Various sizes and shapes'],
-                safety: ['Medical-grade adhesive', 'Latex-free'],
+                indications: ['For the management and prevention of new and old hypertrophic or keloid scars resulting from surgery, injuries, burns, or acne. Helps to soften, flatten, and fade the scar\'s appearance.'],
+                howToUse: '1. Ensure the scar is fully healed and the skin is clean and dry. 2. Cut the sheet to fit the scar size, allowing a small overlap onto the surrounding skin. 3. Peel off the backing and apply the adhesive side to the scar. 4. For best results, wear the sheet for at least 12-24 hours per day. The sheet is reusable; gently wash it with mild soap and water daily and allow to air dry before reapplying. With consistent use over 8-12 weeks, significant improvement can be observed.',
+                options: ['Available in various pre-cut shapes (strips, circles, anchors for breast surgery) and as larger sheets (e.g., 12x15cm) that can be cut to any desired size for maximum versatility.'],
+                safety: ['Utilizes a gentle, medical-grade silicone adhesive that minimizes skin irritation and is suitable for sensitive skin. The sheet is breathable and flexible, providing comfortable wear even on joints or mobile areas.'],
                 faqs: [],
                 downloads: [],
-                images: { hero: '', macro: '' }
+                images: { 
+                    hero: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-scar-hero-16x9.webp', 
+                    macro: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/product-scar-macro-4x3.webp' 
+                }
             }
         ]
     },
@@ -255,7 +308,7 @@ export const enContent: AloraDataType = {
             exploreButton: 'Explore Products',
             scienceButton: 'See the Science',
         },
-        intro: 'Alora unites Aloe vera biofilm with advanced pectin delivery to create clinical-grade wound films, mucosal patches, and luxury skincare masks. Our dual-biopolymer matrix hydrates, soothes, and controls release up to 72 hours, accelerating recovery while feeling weightless and clean on skin. Biocompatible, biodegradable, and engineered for visible results.',
+        intro: "Alora unites Aloe vera biofilm — rich in acemannan and soothing phytochemicals — with advanced pectin delivery science to create a new generation of clinical-grade wound films, mucoadhesive patches, and luxury skincare masks. This dual-biopolymer matrix is meticulously engineered to do more than protect: it provides continuous hydration, anti-inflammatory relief, and a controlled, sustained diffusion of actives for up to 72 hours.\n\nThe result is a material that accelerates tissue repair, supports re-epithelialization, and enhances comfort, all while maintaining a weightless, breathable feel that disappears into the skin. Unlike synthetic polymers, Alora is entirely biocompatible and biodegradable, offering both safety and sustainability. Designed through evidence-led innovation, it delivers visible results that inspire clinical trust and consumer confidence alike — bridging the worlds of medicine and modern skincare with elegance and proof-backed performance.",
         persuasion: {
             clinical: {
                 title: 'Designed for Faster, Safer Healing',
@@ -281,7 +334,7 @@ export const enContent: AloraDataType = {
             },
         },
         products: {
-            title: 'Our Product Platforms',
+            title: 'Our Products',
         },
         trust: {
             quote: '“Aloe polysaccharides (acemannan) + high/low-methoxyl pectins = biocompatible, bioactive, and controllable release.”',
@@ -368,30 +421,48 @@ export const enContent: AloraDataType = {
         sections: {
             platform: {
                 title: 'A Platform, Not Just a Product',
-                text: 'The Alora technology is a foundational platform for creating a diverse range of medical and cosmetic applications. By precisely controlling the ratio and cross-linking of our two core biopolymers, we can engineer materials with a wide spectrum of physical and therapeutic properties.',
+                text: 'The Alora innovation platform is not just a material — it is an engineered biopolymer matrix designed to bridge clinical rigor and consumer trust. By combining acemannan-rich Aloe vera with citrus-derived pectin, the platform achieves a unique balance: Aloe provides bioactivity, hydration, and immunomodulation, while pectin contributes mechanical stability, mucoadhesion, and controlled diffusion of actives.',
                 items: [
-                    'Base formulation: Aloe Polysaccharide + Pectin.',
-                    'Modification via ionic cross-linking, pH adjustment, and plasticizers.',
+                    'Clinically, this synergy allows tailoring of cross-link density for optimized moisture vapor transmission rate (MVTR), porosity for targeted fluid absorption, and dissolution profiles from fast-dissolving films to long-wear dressings.',
+                    'For partners, this platform offers flexibility to create wound dressings that heal faster, skincare masks with visible glow, and oral/ocular delivery films that are convenient, discreet, and vegan-friendly.',
+                    'Base formulation: Acemannan-rich Aloe Polysaccharide + Citrus Pectin.',
                     'Can be loaded with APIs, peptides, growth factors, and other actives.',
-                    'Processing methods include film casting, lyophilization, and 3D printing.',
                     'Scalable manufacturing process from lab bench to commercial production.'
                 ]
             },
             enables: {
                 title: 'What This Enables',
                 items: [
-                    { title: 'Advanced Wound Care', text: 'Dressings that are bioactive, absorbent, and transparent.' },
-                    { title: 'Drug Delivery', text: 'Localized, controlled release for oral, transdermal, and ocular applications.' },
-                    { title: 'Luxury Skincare', text: 'High-performance masks and patches with superior ingredient delivery.' }
+                    { title: 'Advanced Wound Care', text: 'Films that stimulate fibroblast migration, reduce infection risk, and promote faster healing without synthetic chemicals. Message: “Next-gen wound care: nature-powered, clinically proven.”', icon: <WoundCareIcon /> },
+                    { title: 'Drug Delivery', text: 'Site-specific, controlled diffusion for oral, ocular, and dermal applications (4-72 hrs), minimizing systemic side effects. Message: “Precise, patient-friendly delivery.”', icon: <DrugDeliveryIcon /> },
+                    { title: 'Luxury Skincare', text: 'Second-skin hydrogel films enhancing uptake of actives by up to 250% for superior results. Message: “Clinical logic meets cosmetic luxury.”', icon: <SkincareIcon /> }
                 ]
             },
             performance: {
                 title: 'Evidence-Led Engineering',
-                text: 'Our development is driven by data. We systematically map material properties to clinical performance, allowing for rapid prototyping and optimization to meet specific product requirements.',
-                kpis: ['Tunable Adhesion', 'Controlled Release', 'Optimized MVTR', 'High Purity']
+                text: 'Every property of the platform is mapped to measurable outcomes. This data-driven approach means every specification translates into a patient benefit and a market advantage.',
+                kpis: [
+                    {
+                        title: 'Tunable Adhesion → Better Compliance',
+                        description: 'We adjust adhesion from gentle for sensitive skin to strong mucoadhesion for oral patches, ensuring comfort and efficacy.'
+                    },
+                    {
+                        title: 'Controlled Release → Reduced Dosing',
+                        description: 'We dictate how quickly actives are released, from hours to days, ensuring a steady, therapeutic dose.'
+                    },
+                    {
+                        title: 'Optimized MVTR → Faster Healing',
+                        description: 'We control film breathability to create the perfect moist environment, preventing maceration while speeding up healing.'
+                    },
+                    {
+                        title: 'High Purity → Stronger Regulatory Acceptance',
+                        description: 'Our materials are processed to remove impurities, resulting in a clean, biocompatible product with a strong safety profile.'
+                    }
+                ]
             },
             customization: {
                 title: 'Customization Pathways',
+                text: 'Alora is not a one-size-fits-all solution. By adjusting formulation, partners can design products with custom elution curves for antibiotics, thin ocular films (<50 μm) for comfort, or thicker wound dressings (>500 μm) for high exudate. Think of Alora as your material playground — scalable, modifiable, and market-ready.',
                 items: [
                     'Material thickness & size',
                     'Active ingredient & load',
@@ -400,7 +471,7 @@ export const enContent: AloraDataType = {
                     'Dissolution time',
                     'Mechanical strength',
                     'Transparency / Opacity',
-                    'Sterility requirements'
+                    'Packaging & Sterility'
                 ],
                 button: 'Start an Innovation Session'
             }
@@ -586,4 +657,10 @@ export const enContent: AloraDataType = {
             messageRequired: 'Message is required.',
         },
     },
+    cookieConsent: {
+        message: 'We use cookies to improve your experience. You can accept or decline.',
+        accept: 'Accept',
+        decline: 'Decline',
+        learnMore: 'Learn More'
+    }
 };

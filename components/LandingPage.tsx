@@ -2,6 +2,7 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import PersuasionCard from './PersuasionCard';
 import { useLanguage } from '../hooks/useLanguage';
+import ImagePlaceholder from './ImagePlaceholder';
 
 interface LandingPageProps {
   setPage: (page: string) => void;
@@ -50,9 +51,34 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
             <section className="py-16 bg-white/70">
                 <div className="grid grid-cols-1 lg:grid-cols-5">
                     <div className="lg:col-start-2 lg:col-span-3 px-6">
-                        <p className="text-center text-lg md:text-xl text-gray-700/90 leading-relaxed">
-                            {t.landingPageContent.intro}
-                        </p>
+                         <div className="grid md:grid-cols-5 gap-12 items-center">
+                            <div className="md:col-span-3">
+                                <p className="text-lg md:text-xl text-gray-700/90 leading-relaxed whitespace-pre-line">
+                                    {t.landingPageContent.intro}
+                                </p>
+                            </div>
+                            <div className="md:col-span-2 grid grid-cols-2 gap-4">
+                                <div className="pt-8">
+                                    <ImagePlaceholder 
+                                        src="/assets/infographic-aloe-pectin.jpg" 
+                                        alt={t.imageAlts.introVisual1} 
+                                        className="aspect-square rounded-lg shadow-lg transform rotate-3"
+                                    />
+                                </div>
+                                <div>
+                                     <ImagePlaceholder 
+                                        src="/assets/microscope-biofilm.jpg" 
+                                        alt={t.imageAlts.introVisual2} 
+                                        className="aspect-square rounded-lg shadow-lg transform -rotate-2" 
+                                    />
+                                     <ImagePlaceholder 
+                                        src="/assets/skincare-mask-model.jpg" 
+                                        alt={t.imageAlts.introVisual3} 
+                                        className="aspect-square rounded-lg shadow-lg mt-4 transform rotate-1" 
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
