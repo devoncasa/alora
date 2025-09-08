@@ -27,12 +27,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
                         <img 
                             src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-hero-banner.webp" 
                             alt={t.imageAlts.aloraLogo}
-                            className="w-96 mx-auto mb-8"
+                            className="w-80 md:w-96 mx-auto mb-8"
                         />
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-emerald-900/90 brand-font">
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-emerald-900/90 brand-font mt-8">
                             {t.landingPageContent.hero.title}
                         </h1>
-                        <p className="text-lg md:text-xl mb-8 mx-auto text-gray-700/90">
+                        <p className="text-base md:text-lg mb-8 mx-auto text-gray-700/90">
                             {t.landingPageContent.hero.subtitle}
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
