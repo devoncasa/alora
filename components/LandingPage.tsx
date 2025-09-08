@@ -16,10 +16,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
     return (
         <>
             {/* Hero Section */}
-            <section id="hero" className="hero-section relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16">
+            <section id="hero" className="hero-section relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16 overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-cover bg-center" 
-                    style={{ backgroundImage: `url(${heroBannerUrl})` }}
+                    style={{ 
+                        backgroundImage: `url(${heroBannerUrl})`,
+                        filter: 'blur(1px)',
+                        transform: 'scale(1.02)'
+                    }}
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
