@@ -42,7 +42,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
     return (
         <div className="bg-white/70">
             {/* Product Hero */}
-            <section className="relative py-24 pt-32">
+            <section className="hero-section relative py-24 pt-32">
                 <div 
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ backgroundImage: `url(${heroBannerUrl})` }}

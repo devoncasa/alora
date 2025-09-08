@@ -16,7 +16,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
     return (
         <>
             {/* Hero Section */}
-            <section id="hero" className="relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16">
+            <section id="hero" className="hero-section relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16">
                 <div 
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ backgroundImage: `url(${heroBannerUrl})` }}
@@ -25,9 +25,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, 
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
                     <div className="lg:col-start-2 lg:col-span-3 px-6 text-on-image-hero">
                         <img 
-                            src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp" 
+                            src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-hero-banner.webp" 
                             alt={t.imageAlts.aloraLogo}
-                            className="w-48 mx-auto mb-8"
+                            className="w-96 mx-auto mb-8"
                         />
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-emerald-900/90 brand-font">
                             {t.landingPageContent.hero.title}

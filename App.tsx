@@ -23,7 +23,7 @@ const ORGANIZATION_DATA = {
     '@type': 'Organization',
     name: 'Alora Biotechnology',
     url: SITE_URL,
-    logo: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp',
+    logo: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-header.webp',
     sameAs: [
         'https://www.linkedin.com/company/alora-biotechnology',
         'https://twitter.com/AloraBio'

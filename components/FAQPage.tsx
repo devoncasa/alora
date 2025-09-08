@@ -60,7 +60,7 @@ const FAQPage: React.FC<FAQPageProps> = ({ heroBannerUrl }) => {
     return (
         <div className="bg-white/70">
             {/* Hero */}
-            <section className="relative py-32">
+            <section className="hero-section relative py-32">
                 <div 
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ backgroundImage: `url(${heroBannerUrl})` }}

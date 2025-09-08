@@ -155,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
                                 aria-label="Go to homepage"
                             >
                                 <img 
-                                    src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo.webp" 
+                                    src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-header.webp" 
                                     alt={t.imageAlts.aloraLogo} 
                                     className="h-8"
                                 />

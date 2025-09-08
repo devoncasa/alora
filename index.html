@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-favicon.png" />
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-favicon-2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alora Biofilm – Clinical & Skincare Portfolio</title>
     <meta name="description" content="Alora Biofilm combines bioactive Aloe vera films with pectin delivery science for advanced wound care, skincare, and controlled release applications.">
@@ -42,6 +42,41 @@
             border-radius: 4px;
             box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
         }
+        /* --- Hero Font Customization --- */
+        :root {
+          --alora-hero-font: "Century Gothic", "URW Gothic", "Avenir Next", "Segoe UI",
+                             "Helvetica Neue", Arial, ui-sans-serif, system-ui,
+                             "Noto Sans Thai", "Sarabun", sans-serif;
+        }
+
+        .hero-section {
+          --tracking-tight: -0.01em;
+          --tracking-normal: 0em;
+        }
+
+        /* Headline */
+        .hero-section h1 {
+          font-family: var(--alora-hero-font);
+          font-weight: 600;
+          letter-spacing: var(--tracking-tight);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-rendering: optimizeLegibility;
+        }
+
+        /* Sub-headline */
+        .hero-section p {
+          font-family: var(--alora-hero-font);
+          font-weight: 400;
+          letter-spacing: var(--tracking-normal);
+        }
+
+        /* Hero CTA buttons (text only) */
+        .hero-section a, .hero-section button {
+          font-family: var(--alora-hero-font);
+          font-weight: 600;
+        }
+        /* --- End Hero Font Customization --- */
     </style>
 <script type="importmap">
 {

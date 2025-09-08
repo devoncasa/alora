@@ -34,7 +34,7 @@ const ScienceBehindPage: React.FC<ScienceBehindPageProps> = ({ heroBannerUrl }) 
         <div className="bg-white/70">
             <StickyCTA />
             {/* Hero */}
-            <section className="relative py-32">
+            <section className="hero-section relative py-32">
                 <div 
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ backgroundImage: `url(${heroBannerUrl})` }}
