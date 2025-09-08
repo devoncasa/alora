@@ -391,7 +391,13 @@ export const enContent: AloraDataType = {
                 expandLink: 'View clinical use cases →',
                 collapseLink: 'Hide clinical use cases',
                 expandedContent: {
-                    longDescription: 'The result: quicker re-epithelialization, less irritation, and reliable wear across wound, oral, and ocular sites. Our platform technology is adaptable for various therapeutic needs, from chronic wound management to targeted drug delivery.',
+                    longDescription: `The clinical efficacy of the Alora platform is rooted in a dual-action mechanism that addresses key barriers to healing:
+
+■ Bioactive Modulation: High-purity acemannan polysaccharides directly interact with macrophages, promoting a shift from a pro-inflammatory (M1) to a pro-reparative (M2) phenotype. This accelerates the transition from the inflammatory to the proliferative phase of healing and stimulates orderly collagen deposition, leading to reduced scarring.
+
+■ Optimized Micro-environment: The calcium-crosslinked pectin matrix creates a hydrogel with a precisely engineered Moisture Vapor Transmission Rate (MVTR). This maintains optimal hydration at the wound bed, preventing eschar formation while avoiding maceration of surrounding tissue, a critical factor for rapid re-epithelialization.
+
+■ Protective Scaffolding: The film acts as a flexible, biocompatible barrier (per ISO 10993) against external contaminants, reducing infection risk. Its structure absorbs exudate, trapping proteases and bacteria away from the wound bed, supporting an undisturbed healing trajectory.`,
                     imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/persuasion-clinical-chart.webp',
                 }
             },
@@ -402,7 +408,13 @@ export const enContent: AloraDataType = {
                 expandLink: 'Explore skincare line →',
                 collapseLink: 'Hide skincare line',
                 expandedContent: {
-                    longDescription: 'The plant-based matrix is fragrance-free, sensitive-skin friendly, and dissolves cleanly without residue. It provides an unparalleled delivery system for active ingredients, ensuring they penetrate deeper for more noticeable, longer-lasting results.',
+                    longDescription: `The Alora cosmetic-grade biofilm functions as an advanced topical delivery system, enhancing ingredient efficacy through several key principles:
+
+■ Enhanced Penetration via Occlusion: The hydrogel forms a 'second skin' that creates a highly occlusive barrier. This minimizes Transepidermal Water Loss (TEWL) and hyper-hydrates the stratum corneum, significantly increasing skin permeability and allowing for up to 250% greater penetration of loaded actives like Vitamin C and peptides.
+
+■ Sustained Release for Prolonged Action: Unlike liquid serums, actives are integrated within the biofilm matrix and are released gradually as the mask transfers moisture to the skin. This ensures a sustained, stable delivery over the 20-30 minute application, which is particularly beneficial for stabilizing volatile molecules like L-Ascorbic Acid (Vitamin C).
+
+■ Anti-Inflammatory Soothing: For post-procedure applications, the film's high water content and inherent cooling properties, combined with aloe's natural anti-inflammatory compounds, actively down-regulate redness and discomfort. It provides immediate calming while protecting the compromised skin barrier.`,
                     imageSrc: 'https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-assets/persuasion-beauty-model.webp',
                 }
             },
@@ -562,23 +574,28 @@ export const enContent: AloraDataType = {
                 faqs: [
                     {
                         q: 'What exactly is Alora Biofilm?',
-                        a: 'Alora Biofilm is an advanced biopolymer platform made from a synergistic matrix of purified Aloe vera polysaccharides (acemannan) and plant-derived pectin. This combination creates a versatile material that can be engineered into films, patches, and masks for medical and cosmetic uses.'
+                        a: 'Alora Biofilm is an advanced, flexible hydrogel platform engineered from a synergistic matrix of two plant-based biopolymers: high-purity Aloe vera polysaccharides (acemannan) and structural pectin from citrus. It is not simply a mixture, but a cross-linked material where aloe provides clinically-proven bioactive properties (like reduced inflammation and cellular stimulation), while pectin forms a tunable scaffold that controls moisture, adhesion, and the sustained release of active ingredients. This results in a versatile, high-performance material that can be precisely tailored for medical dressings, drug delivery systems, and professional skincare.'
                     },
                     {
                         q: 'What are the main active components?',
-                        a: 'The two core components are Aloe vera, which provides bioactive properties that support healing and reduce inflammation, and Pectin, which provides a structural, tunable scaffold for controlled release and optimal moisture management.'
+                        a: `The platform's efficacy comes from its two core components working in synergy:
+1. **Bioactive Aloe Vera:** We use a purified extract rich in acemannan, a high-molecular-weight polysaccharide known to stimulate fibroblasts and macrophages, key cells in the tissue repair process. It also provides natural anti-inflammatory and soothing properties.
+2. **Structural Pectin:** This citrus-derived polysaccharide forms the hydrogel's backbone. Through ionic cross-linking, we can precisely control its physical properties, turning it into a smart scaffold that manages wound exudate, adheres gently to tissues, or delivers active ingredients over a programmed period.`
                     },
                     {
                         q: 'How is this different from other hydrogels or dressings?',
-                        a: 'The key difference is the synergy between aloe and pectin. This dual-polymer system allows for superior tunability of physical properties (adhesion, dissolution, strength) while incorporating the proven bioactivity of acemannan, something many synthetic hydrogels lack.'
+                        a: `Alora Biofilm differs in three key ways:
+1. **Bioactivity & Biocompatibility:** Unlike inert synthetic dressings (e.g., polyurethanes, silicones), Alora actively participates in the healing process via acemannan. It is also fully biocompatible and biodegradable.
+2. **Superior Tunability:** Compared to single-polymer natural dressings (e.g., alginates), our dual-polymer system offers a much wider range of customizable properties. We can independently tune bioactivity, adhesion, moisture vapor transmission rate (MVTR), and drug release profiles to match specific clinical needs.
+3. **Elegant Feel & Performance:** For cosmetic applications, the biofilm forms a true 'second skin' that is transparent, weightless, and non-sticky, offering superior comfort and ingredient delivery compared to traditional paper or biocellulose masks.`
                     },
                     {
                         q: 'Is the technology patented?',
-                        a: 'Yes, we have a portfolio of patents and pending applications covering our core formulation, manufacturing processes, and specific applications of the technology.'
+                        a: 'Yes, we have a portfolio of patents and pending applications covering our core formulation, manufacturing processes, and specific applications of the technology. This intellectual property protects the unique synergy and engineering principles of the Alora platform.'
                     },
                     {
                         q: 'Is the biofilm biodegradable and sustainable?',
-                        a: 'Absolutely. Both Aloe vera and pectin are from renewable plant sources, and the final product is fully biodegradable. Sustainability is a core principle of our technology.'
+                        a: 'Absolutely. Both Aloe vera and pectin are from renewable plant sources. Our manufacturing process is optimized for minimal waste, and the final product is fully biodegradable, breaking down into harmless organic matter. Sustainability is a core principle of our technology.'
                     }
                 ]
             },
@@ -587,19 +604,19 @@ export const enContent: AloraDataType = {
                 faqs: [
                     {
                         q: 'What are the primary applications for Alora technology?',
-                        a: 'Our platform is highly versatile. Key application areas include advanced wound care (chronic and acute wounds), localized drug delivery (oral, ocular, transdermal), and high-performance skincare (hydrating masks, calming films, scar treatment).'
+                        a: 'Our platform is highly versatile. Key application areas include:\n- **Advanced Wound Care:** For chronic ulcers, burns, and post-operative sites.\n- **Localized Drug Delivery:** Mucoadhesive patches for oral health, ocular films for eye conditions, and transdermal patches.\n- **High-Performance Skincare:** Hydrating and treatment masks, calming post-procedure films, and scar management sheets.'
                     },
                     {
                         q: 'Can Alora products be used on sensitive skin?',
-                        a: 'Yes. The materials are derived from natural sources and have undergone extensive biocompatibility testing (ISO 10993). Our cosmetic products are formulated to be hypoallergenic and fragrance-free, making them suitable for sensitive skin.'
+                        a: 'Yes. The materials are derived from natural sources and have undergone extensive biocompatibility testing (ISO 10993) to ensure they are non-irritating and non-sensitizing. Our cosmetic products are specifically formulated to be hypoallergenic and fragrance-free, making them suitable for even very sensitive skin.'
                     },
                     {
                         q: 'How long does a film or patch last when applied?',
-                        a: 'Wear time is tunable. Our wound care films can last up to 7 days, depending on wound conditions. Oral mucoadhesive patches last for several hours, while skincare masks are typically for short-duration (20-30 minute) treatments.'
+                        a: 'Wear time is an engineered property that we can tune. For example:\n- Wound care films can be designed for up to 7 days of wear, depending on wound conditions.\n- Oral mucoadhesive patches typically last for 2-6 hours before dissolving completely.\n- Skincare masks are designed for short-duration (20-30 minute) high-impact treatments.'
                     },
                     {
                         q: 'Can active pharmaceutical ingredients (APIs) be added?',
-                        a: 'Yes. The platform is an excellent vehicle for controlled drug delivery. We can incorporate a wide range of APIs, from small molecules to large peptides and growth factors, and can tune the release profile to meet specific therapeutic needs.'
+                        a: 'Yes, the platform is an excellent vehicle for controlled drug delivery. APIs can be homogenously incorporated into the biofilm matrix before it is dried. This allows us to load a wide range of APIs—from small molecules to large peptides and growth factors—and then tune the release profile for sustained, localized therapeutic effect, which can improve efficacy and reduce systemic side effects.'
                     }
                 ]
             },
@@ -608,27 +625,27 @@ export const enContent: AloraDataType = {
                 faqs: [
                     {
                         q: 'Are your medical products sterile?',
-                        a: 'Yes, all products intended for medical use, such as our wound films and post-procedure films, are sterilized, typically using gamma irradiation, to meet clinical standards (SAL 10⁻⁶).'
+                        a: 'Yes, all products intended for medical use, such as our wound films and post-procedure films, are terminally sterilized, typically using gamma irradiation, to meet the stringent sterility assurance level (SAL 10⁻⁶) required for clinical applications.'
                     },
                     {
                         q: 'Where are the products manufactured?',
-                        a: 'Our products are manufactured in facilities that are compliant with ISO 13485 standards for medical device manufacturing, ensuring the highest level of quality control and traceability.'
+                        a: 'Our products are manufactured in state-of-the-art facilities that are compliant with ISO 13485 standards for medical device manufacturing. This ensures the highest level of quality control, process validation, and traceability from raw materials to the final product.'
                     },
                     {
                         q: 'Can I get samples of your products?',
-                        a: 'Yes, we provide samples to qualified clinical and commercial partners. Please use the "Request Samples" button or our contact form to submit your inquiry.'
+                        a: 'Yes, we provide evaluation samples to qualified clinical and commercial partners who are exploring co-development, licensing, or distribution opportunities. Please use the "Request Samples" button or our contact form to submit your inquiry with details about your project.'
                     },
                     {
                         q: 'Are the skincare masks single-use?',
-                        a: 'Yes, for hygiene and performance reasons, our skincare masks are designed for a single application to deliver a fresh, potent dose of active ingredients each time.'
+                        a: 'Yes, for hygiene and performance reasons, our skincare masks are designed for a single application. This ensures that a fresh, potent, and uncontaminated dose of active ingredients is delivered to the skin each time, providing the best possible results.'
                     },
                     {
                         q: 'How does the oral mucoadhesive patch stay in place?',
-                        a: 'The patch is engineered with a specific grade of pectin that becomes highly adhesive when it comes in contact with saliva in the mouth. This allows it to adhere firmly but gently to the oral mucosa for several hours before dissolving.'
+                        a: 'The patch is engineered with a specific grade of pectin that exhibits strong mucoadhesive properties. When it comes in contact with saliva in the mouth, the polymer chains hydrate and form a strong but flexible bond with the mucosal tissue. This allows it to adhere firmly for several hours before dissolving naturally.'
                     },
                     {
                         q: 'Is this technology available for licensing or white-label partnerships?',
-                        a: 'Yes, we actively seek commercial partners for licensing, co-development, and private label opportunities. Please contact our business development team through the contact form to discuss your project.'
+                        a: 'Yes, we actively seek commercial partners for a range of collaborations, including technology licensing, co-development of new products, and private label manufacturing for established brands. Please contact our business development team through the contact form to discuss your project.'
                     }
                 ]
             }

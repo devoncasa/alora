@@ -8,14 +8,22 @@ interface FAQItemProps {
 const FAQItem: React.FC<FAQItemProps> = ({ faq }) => {
     const [isOpen, setIsOpen] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
+    const itemRef = useRef<HTMLDivElement>(null);
     const contentId = `faq-answer-${faq.q.replace(/\s+/g, '-').toLowerCase().slice(0, 30)}`;
 
     const toggleOpen = () => {
         setIsOpen(!isOpen);
+        // Scroll into view when opening, but not when closing
+        if (!isOpen && itemRef.current) {
+            // A slight timeout allows the animation to start before scrolling
+            setTimeout(() => {
+                itemRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
     };
 
     return (
-        <div className="border-b border-gray-200/80">
+        <div className="border-b border-gray-200/80" ref={itemRef}>
             <button
                 onClick={toggleOpen}
                 className="flex justify-between items-center w-full py-5 text-left"
@@ -42,7 +50,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ faq }) => {
                 hidden={!isOpen}
             >
                 <div className="pb-5 pr-6">
-                    <p className="text-gray-600/90">{faq.a}</p>
+                    <p className="text-gray-600/90 whitespace-pre-line">{faq.a}</p>
                 </div>
             </div>
         </div>

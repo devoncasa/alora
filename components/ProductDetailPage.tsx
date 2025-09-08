@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { ProductDetailData, ClinicalSpec } from '../types';
 import { CheckCircleIcon } from '../constants';
 import ImagePlaceholder from './ImagePlaceholder';
@@ -39,6 +39,10 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
     const { name, hero, whatItIs, howItWorks, clinicalSpecs, indications, howToUse, options, safety, faqs, downloads, images } = product;
     const { titles } = t.productDetailPageContent;
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [product]);
+
     return (
         <div className="bg-white/70">
             {/* Product Hero */}
@@ -53,10 +57,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
-                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-on-image-hero">
-                        <button onClick={() => setSelectedProduct(null)} className="text-sm font-semibold text-emerald-600/90 hover:text-emerald-800 mb-4" aria-label={t.productDetailPageContent.backButton}>
-                            {t.productDetailPageContent.backButton}
-                        </button>
+                    <div className="lg:col-start-2 lg:col-span-3 px-6 text-on-image-hero text-center">
                         <h1 className="text-4xl md:text-5xl font-bold text-emerald-900/90 brand-font mb-4">{name}</h1>
                         <p className="text-lg md:text-xl text-gray-700/90">{hero}</p>
                     </div>
@@ -105,6 +106,16 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                                     </div>
                                 </DetailSection>
                             )}
+
+                             <div className="text-center mt-12 pt-8 border-t border-gray-200/80">
+                                <button
+                                    onClick={() => setSelectedProduct(null)}
+                                    className="bg-gray-100/80 text-gray-800/90 px-8 py-3 rounded-md font-semibold hover:bg-gray-200/80 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1"
+                                    aria-label={t.productDetailPageContent.backButton}
+                                >
+                                    {t.productDetailPageContent.backButton}
+                                </button>
+                            </div>
                         </div>
 
                         {/* Sidebar */}

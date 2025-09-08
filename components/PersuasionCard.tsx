@@ -47,7 +47,7 @@ const PersuasionCard: React.FC<PersuasionCardProps> = ({ cardData, imageAlt }) =
             >
                 <div className="mt-4 pt-4 border-t border-emerald-200/50">
                     <img src={cardData.expandedContent.imageSrc} alt={imageAlt} className="rounded-lg mb-4 w-full object-cover shadow-md" />
-                    <p className="text-gray-700/90 text-left">{cardData.expandedContent.longDescription}</p>
+                    <p className="text-gray-700/90 text-left whitespace-pre-line">{cardData.expandedContent.longDescription}</p>
                 </div>
             </div>
 
