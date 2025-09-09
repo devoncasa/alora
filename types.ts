@@ -128,6 +128,9 @@ export interface AloraDataType {
         connect: string;
         copyright: string;
         disclaimer: string;
+        address: string;
+        tel: string;
+        email: string;
     };
     productCardContent: {
         viewDetails: string;
@@ -216,6 +219,75 @@ export interface AloraDataType {
             faqs: { q: string; a: string; }[];
         }[];
     };
+    privacyPageContent: {
+        hero: {
+            title: string;
+            subtitle: string;
+        };
+        introduction: {
+            title: string;
+            text: string;
+        };
+        informationWeCollect: {
+            title: string;
+            items: string[];
+        };
+        howWeUseYourInformation: {
+            title: string;
+            items: string[];
+        };
+        dataSharing: {
+            title: string;
+            text: string;
+            items: string[];
+        };
+        dataSecurity: {
+            title: string;
+            text: string;
+        };
+        yourRights: {
+            title: string;
+            items: string[];
+        };
+    };
+    termsPageContent: {
+        hero: {
+            title: string;
+            subtitle: string;
+        };
+        introduction: {
+            title: string;
+            text: string;
+        };
+        eligibility: {
+            title: string;
+            items: string[];
+        };
+        productInformation: {
+            title: string;
+            items: string[];
+        };
+        orderingAndPayment: {
+            title: string;
+            items: string[];
+        };
+        intellectualProperty: {
+            title: string;
+            text: string;
+        };
+        limitationOfLiability: {
+            title: string;
+            items: string[];
+        };
+        governingLaw: {
+            title: string;
+            text: string;
+        };
+        contactInformation: {
+            title: string;
+            text: string;
+        };
+    };
     productDetailPageContent: {
         backButton: string;
         titles: {
@@ -246,6 +318,8 @@ export interface AloraDataType {
         science: PageSeoData;
         innovation: PageSeoData;
         faq: PageSeoData;
+        privacy: PageSeoData;
+        terms: PageSeoData;
     };
     contactModal: {
         title: string;
@@ -264,6 +338,9 @@ export interface AloraDataType {
             emailInvalid: string;
             messageRequired: string;
         };
+        address: string;
+        tel: string;
+        email: string;
     };
     cookieConsent: {
         message: string;

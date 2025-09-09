@@ -6,6 +6,26 @@ interface ContactModalProps {
     onClose: () => void;
 }
 
+const LocationIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657l-5.657 5.657a1 1 0 01-1.414 0l-5.657-5.657A8 8 0 1118 8a8 8 0 01-1.343 4.343" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+);
+
+const PhoneIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+    </svg>
+);
+
+const EmailIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+);
+
+
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const { t } = useLanguage();
     const { contactModal } = t;
@@ -176,6 +196,21 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                     <>
                         <h2 id="contact-modal-title" className="text-2xl font-bold text-emerald-800/90 mb-2">{contactModal.title}</h2>
                         <p className="text-gray-600/90 mb-6">{contactModal.subtitle}</p>
+
+                        <div className="mb-6 py-4 border-t border-b border-gray-200/80 space-y-3 text-gray-700/90 text-sm">
+                            <div className="flex items-start">
+                                <LocationIcon />
+                                <p className="ml-3">{contactModal.address}</p>
+                            </div>
+                            <div className="flex items-start">
+                                <PhoneIcon />
+                                <a href={`tel:${contactModal.tel.replace(/Tel: |[() ]/g, '')}`} className="ml-3 hover:text-emerald-600 transition-colors">{contactModal.tel}</a>
+                            </div>
+                            <div className="flex items-start">
+                                <EmailIcon />
+                                <a href={`mailto:${contactModal.email.replace('Email: ', '')}`} className="ml-3 hover:text-emerald-600 transition-colors">{contactModal.email}</a>
+                            </div>
+                        </div>
 
                         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                             <div>

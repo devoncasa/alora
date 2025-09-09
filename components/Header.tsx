@@ -158,6 +158,7 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
                                     src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-header.webp" 
                                     alt={t.imageAlts.aloraLogo} 
                                     className="h-8"
+                                    style={{ filter: 'brightness(0.95) saturate(1.15) contrast(1.1)' }}
                                 />
                             </div>
 

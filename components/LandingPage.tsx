@@ -3,6 +3,7 @@ import ProductCard from './ProductCard';
 import PersuasionCard from './PersuasionCard';
 import { useLanguage } from '../hooks/useLanguage';
 import ImagePlaceholder from './ImagePlaceholder';
+import { useParallax } from '../hooks/useParallax';
 
 interface LandingPageProps {
   setPage: (page: string) => void;
@@ -12,27 +13,32 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, heroBannerUrl }) => {
     const { t } = useLanguage();
+    const parallaxRef = useParallax(0.3);
 
     return (
         <>
             {/* Hero Section */}
             <section id="hero" className="hero-section relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16 overflow-hidden">
                 <div 
+                    ref={parallaxRef}
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ 
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',
-                        transform: 'scale(1.02)'
                     }}
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
                     <div className="lg:col-start-2 lg:col-span-3 px-6 text-on-image-hero">
-                        <img 
-                            src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-hero-banner.webp" 
-                            alt={t.imageAlts.aloraLogo}
-                            className="w-80 md:w-96 mx-auto mb-8"
-                        />
+                        <div className="relative w-80 md:w-96 mx-auto mb-8">
+                            <div className="absolute inset-[-1rem] bg-white opacity-30 rounded-full filter blur-3xl" aria-hidden="true"></div>
+                            <img 
+                                src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-hero-banner.webp" 
+                                alt={t.imageAlts.aloraLogo}
+                                className="relative z-10 w-full"
+                                style={{ filter: 'brightness(0.95) saturate(1.15) contrast(1.1)' }}
+                            />
+                        </div>
                         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-emerald-900/90 brand-font mt-8">
                             {t.landingPageContent.hero.title}
                         </h1>

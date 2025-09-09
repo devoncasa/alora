@@ -371,6 +371,9 @@ export const enContent: AloraDataType = {
         connect: 'Connect',
         copyright: `© ${new Date().getFullYear()} Alora Biotechnology. All rights reserved.`,
         disclaimer: 'This information is for informational purposes only and does not constitute medical advice.',
+        address: '919/1 JTC Building, Silom 19, Silom Road, Bangrak, Bangkok 10500 TH',
+        tel: '+66(0)81 851 9922',
+        email: 'info.alora@gmail.com'
     },
     productCardContent: {
         viewDetails: 'View Details'
@@ -651,6 +654,105 @@ export const enContent: AloraDataType = {
             }
         ]
     },
+    privacyPageContent: {
+        hero: {
+            title: 'Privacy Policy',
+            subtitle: 'Your privacy and trust are central to how we operate.'
+        },
+        introduction: {
+            title: 'Introduction',
+            text: "This Privacy Policy explains how Alora Biofilm (the ‘Company’) collects, uses, stores, and protects personal information from patients, healthcare professionals, research partners, and customers."
+        },
+        informationWeCollect: {
+            title: 'Information We Collect',
+            items: [
+                'Contact details (name, email, phone)',
+                'Professional affiliations (hospital, clinic, academic institution)',
+                'Purchase and order details (for product logistics)',
+                'Technical data (cookies, browser type, IP address)'
+            ]
+        },
+        howWeUseYourInformation: {
+            title: 'How We Use Your Information',
+            items: [
+                'Provide product samples, technical dossiers, and clinical support',
+                'Improve our products, services, and research collaborations',
+                'Comply with regulatory requirements for clinical data and product use',
+                'Secure digital experience through analytics and fraud prevention'
+            ]
+        },
+        dataSharing: {
+            title: 'Data Sharing',
+            text: 'We do not sell personal data. Limited sharing occurs with:',
+            items: [
+                'Regulatory authorities (for compliance)',
+                'Logistics partners (for shipping samples/products)',
+                'Research collaborators (with consent)'
+            ]
+        },
+        dataSecurity: {
+            title: 'Data Security & Retention',
+            text: 'We implement ISO 27001-level safeguards, encryption, and access controls. Personal data is stored only as long as necessary for regulatory and clinical compliance.'
+        },
+        yourRights: {
+            title: 'Your Rights',
+            items: [
+                'Access and correction of your data',
+                'Request data deletion',
+                'Opt-out from marketing communications'
+            ]
+        }
+    },
+    termsPageContent: {
+        hero: {
+            title: 'Terms of Service',
+            subtitle: 'Clear guidelines for safe and responsible use of Alora Biofilm products and services.'
+        },
+        introduction: {
+            title: 'Introduction',
+            text: "These Terms of Service (‘Terms’) govern your use of our website, products, and services. By accessing or purchasing from Alora Biofilm, you agree to these Terms."
+        },
+        eligibility: {
+            title: 'Eligibility',
+            items: [
+                'Products intended for use by clinicians, healthcare providers, and informed consumers.',
+                'Users must comply with local regulations and clinical guidance.'
+            ]
+        },
+        productInformation: {
+            title: 'Product Information',
+            items: [
+                'Alora Biofilm provides wound films, skincare masks, mucoadhesive patches, and related biopolymer products.',
+                'Information provided is for educational and marketing purposes only, not as a substitute for professional medical advice.'
+            ]
+        },
+        orderingAndPayment: {
+            title: 'Ordering & Payment',
+            items: [
+                'Orders processed via secure third-party payment gateways.',
+                'International orders may be subject to customs duties, taxes, and regulations.'
+            ]
+        },
+        intellectualProperty: {
+            title: 'Intellectual Property',
+            text: 'All trademarks, product names, and biofilm technologies are proprietary to Alora Biofilm.'
+        },
+        limitationOfLiability: {
+            title: 'Limitation of Liability',
+            items: [
+                'Alora Biofilm is not responsible for misuse of products outside indicated use-cases.',
+                'Clinical outcomes may vary by patient and condition.'
+            ]
+        },
+        governingLaw: {
+            title: 'Governing Law & Jurisdiction',
+            text: 'These Terms are governed by Thai law and applicable international regulations.'
+        },
+        contactInformation: {
+            title: 'Contact Information',
+            text: 'For questions: legal@alora.bio'
+        }
+    },
     productDetailPageContent: {
         backButton: '← Back to all products',
         titles: {
@@ -732,6 +834,18 @@ export const enContent: AloraDataType = {
             description: 'Find answers to frequently asked questions about Alora\'s biofilm technology, products, applications, and partnership opportunities.',
             keywords: ['Alora Biofilm FAQ', 'biofilm technology', 'wound care questions', 'skincare application', 'mucoadhesive patch info', 'biopolymer'],
             hreflang: { en: '/faq', th: '/th/faq' }
+        },
+        privacy: {
+            title: 'Privacy Policy | Alora Biofilm',
+            description: 'Learn how Alora Biofilm protects your data, privacy, and rights when engaging with our clinical and skincare innovations.',
+            keywords: ['privacy policy', 'data protection', 'biotechnology privacy', 'clinical data', 'patient privacy', 'skincare data', 'pectin delivery', 'alora biofilm'],
+            hreflang: { en: '/privacy', th: '/th/privacy' }
+        },
+        terms: {
+            title: 'Terms of Service | Alora Biofilm',
+            description: 'Review the terms of using Alora Biofilm products, services, and website, covering clinical biofilm, wound care, and skincare applications.',
+            keywords: ['terms of service', 'product use terms', 'clinical biofilm', 'wound care terms', 'skincare policy', 'biotechnology', 'alora biofilm'],
+            hreflang: { en: '/terms', th: '/th/terms' }
         }
     },
     contactModal: {
@@ -751,6 +865,9 @@ export const enContent: AloraDataType = {
             emailInvalid: 'Please enter a valid email address.',
             messageRequired: 'Message is required.',
         },
+        address: 'Address: 919/1 JTC Building, Silom 19, Silom Road, Bangrak, Bangkok 10500 TH.',
+        tel: 'Tel: +66(0)81 851 9922',
+        email: 'Email: info.alora@gmail.com'
     },
     cookieConsent: {
         message: 'We use cookies to improve your experience. You can accept or decline.',

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
+import { useParallax } from '../hooks/useParallax';
 
 interface FAQItemProps {
     faq: { q: string; a: string };
@@ -64,17 +65,18 @@ interface FAQPageProps {
 const FAQPage: React.FC<FAQPageProps> = ({ heroBannerUrl }) => {
     const { t } = useLanguage();
     const { hero, sections } = t.faqPageContent;
+    const parallaxRef = useParallax(0.3);
 
     return (
         <div className="bg-white/70">
             {/* Hero */}
             <section className="hero-section relative py-32 overflow-hidden">
                 <div 
+                    ref={parallaxRef}
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ 
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',
-                        transform: 'scale(1.02)'
                     }}
                 ></div>
                 <div className="absolute inset-0 bg-green-50/70"></div>

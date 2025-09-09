@@ -6,6 +6,8 @@ import ProductDetailPage from './components/ProductDetailPage';
 import ScienceBehindPage from './components/ScienceBehindPage';
 import InnovationPage from './components/InnovationPage';
 import FAQPage from './components/FAQPage';
+import PrivacyPolicyPage from './components/PrivacyPolicyPage';
+import TermsOfServicePage from './components/TermsOfServicePage';
 import BackgroundImage from './components/BackgroundImage';
 import ContactModal from './components/ContactModal';
 import CookieConsentBanner from './components/CookieConsentBanner';
@@ -131,6 +133,14 @@ const AppContent: React.FC = () => {
                     pageSeoData = t.seo.faq;
                     path = language === 'th' ? '/th/faq' : '/faq';
                     break;
+                case 'privacy':
+                    pageSeoData = t.seo.privacy;
+                    path = language === 'th' ? '/th/privacy' : '/privacy';
+                    break;
+                case 'terms':
+                    pageSeoData = t.seo.terms;
+                    path = language === 'th' ? '/th/terms' : '/terms';
+                    break;
                 case 'landing':
                 default:
                     pageSeoData = t.seo.landing;
@@ -245,6 +255,10 @@ const AppContent: React.FC = () => {
                 return <InnovationPage heroBannerUrl={heroBannerUrl} />;
             case 'faq':
                 return <FAQPage heroBannerUrl={heroBannerUrl} />;
+            case 'privacy':
+                return <PrivacyPolicyPage heroBannerUrl={'/assets/privacy-hero.webp'} />;
+            case 'terms':
+                return <TermsOfServicePage heroBannerUrl={'/assets/terms-hero.webp'} />;
             case 'landing':
             default:
                 return <MainContent setPage={setPage} setSelectedProduct={setSelectedProduct} heroBannerUrl={heroBannerUrl} />;
