@@ -818,15 +818,15 @@ export const enContent: AloraDataType = {
             hreflang: { en: '/', th: '/th' }
         },
         science: {
-            title: 'The Science of Synergy | Alora Biofilm',
-            description: 'Explore the materials science behind our dual-biopolymer platform, combining Aloe vera\'s bioactivity with Pectin\'s structural control for superior performance.',
-            keywords: ['biopolymer science', 'acemannan', 'pectin hydrogel', 'material science', 'drug delivery mechanism', 'wound healing science', 'biocompatibility'],
+            title: 'The Science of Bioactive Aloe Vera & Pectin Synergy | Alora Biofilm Technology',
+            description: "Explore the materials science behind our dual-biopolymer platform, combining Aloe vera's acemannan bioactivity with Pectin's structural control for superior performance in wound healing and drug delivery.",
+            keywords: ['biopolymer science', 'acemannan', 'pectin hydrogel', 'material science', 'drug delivery mechanism', 'wound healing science', 'biocompatibility', 'fibroblast proliferation', 'mucoadhesion', 'MVTR', 'ionic cross-linking', 'aloe vera'],
             hreflang: { en: '/science', th: '/th/science' }
         },
         innovation: {
-            title: 'Innovation Platform | Alora Biofilm',
-            description: 'Discover the Alora innovation platform, a versatile biopolymer technology for creating custom solutions in wound care, drug delivery, and cosmetics.',
-            keywords: ['biopolymer platform', 'medical device innovation', 'cosmetic technology', 'custom formulation', 'drug delivery systems', 'white-label skincare'],
+            title: 'Alora Innovation Platform | Custom Biopolymer Solutions for Medical & Skincare',
+            description: 'Discover the Alora innovation platform—a versatile biopolymer technology for creating custom, evidence-led solutions in advanced wound care, controlled drug delivery, and luxury skincare. Partner with us.',
+            keywords: ['biopolymer platform', 'medical device innovation', 'cosmetic technology', 'custom formulation', 'drug delivery systems', 'white-label skincare', 'tunable adhesion', 'controlled release', 'API loading', 'co-development', 'aloe vera'],
             hreflang: { en: '/innovation', th: '/th/innovation' }
         },
         faq: {

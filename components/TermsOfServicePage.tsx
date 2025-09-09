@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
-import { useParallax } from '../hooks/useParallax';
 
 const LegalSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
     <section>
@@ -18,15 +17,13 @@ interface TermsOfServicePageProps {
 const TermsOfServicePage: React.FC<TermsOfServicePageProps> = ({ heroBannerUrl }) => {
     const { t } = useLanguage();
     const { hero, introduction, eligibility, productInformation, orderingAndPayment, intellectualProperty, limitationOfLiability, governingLaw, contactInformation } = t.termsPageContent;
-    const parallaxRef = useParallax(0.3);
 
     return (
         <div className="bg-white/70">
             {/* Hero */}
             <section className="hero-section relative py-32 overflow-hidden">
                 <div
-                    ref={parallaxRef}
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center bg-fixed"
                     style={{
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',
@@ -35,6 +32,7 @@ const TermsOfServicePage: React.FC<TermsOfServicePageProps> = ({ heroBannerUrl }
                 <div className="absolute inset-0 bg-green-50/70"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
                     <div className="lg:col-start-2 lg:col-span-3 px-6 text-center text-on-image-hero">
+                        {/* FIX: Corrected a corrupted h1 tag that was causing numerous parsing errors. */}
                         <h1 className="text-4xl md:text-6xl font-bold text-emerald-900/90 brand-font mb-4">{hero.title}</h1>
                         <p className="text-lg md:text-xl mx-auto text-gray-700/90">{hero.subtitle}</p>
                     </div>

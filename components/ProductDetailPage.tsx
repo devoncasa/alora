@@ -3,7 +3,6 @@ import type { ProductDetailData, ClinicalSpec } from '../types';
 import { CheckCircleIcon } from '../constants';
 import ImagePlaceholder from './ImagePlaceholder';
 import { useLanguage } from '../hooks/useLanguage';
-import { useParallax } from '../hooks/useParallax';
 
 // --- Reusable Sub-Components for the Detail Page ---
 
@@ -39,7 +38,6 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
     const { t } = useLanguage();
     const { name, hero, whatItIs, howItWorks, clinicalSpecs, indications, howToUse, options, safety, faqs, downloads, images } = product;
     const { titles } = t.productDetailPageContent;
-    const parallaxRef = useParallax(0.3);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -50,8 +48,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
             {/* Product Hero */}
             <section className="hero-section relative py-24 pt-32 overflow-hidden">
                 <div 
-                    ref={parallaxRef}
-                    className="absolute inset-0 bg-cover bg-center" 
+                    className="absolute inset-0 bg-cover bg-center bg-fixed" 
                     style={{ 
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',

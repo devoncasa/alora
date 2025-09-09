@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '../hooks/useLanguage';
-import { useParallax } from '../hooks/useParallax';
 
 const LegalSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
     <section>
@@ -18,15 +17,13 @@ interface PrivacyPolicyPageProps {
 const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ heroBannerUrl }) => {
     const { t } = useLanguage();
     const { hero, introduction, informationWeCollect, howWeUseYourInformation, dataSharing, dataSecurity, yourRights } = t.privacyPageContent;
-    const parallaxRef = useParallax(0.3);
 
     return (
         <div className="bg-white/70">
             {/* Hero */}
             <section className="hero-section relative py-32 overflow-hidden">
                 <div
-                    ref={parallaxRef}
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center bg-fixed"
                     style={{
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',

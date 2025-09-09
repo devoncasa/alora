@@ -112,7 +112,7 @@ const AppContent: React.FC = () => {
     const productDetailData: ProductDetailData | undefined = selectedProduct ? t.data.productDetails.find(p => p.name === selectedProduct) : undefined;
 
     useEffect(() => {
-        // --- 1. Get SEO Data ---
+        // --- 1. Get Base SEO Data & Path ---
         const getSeoData = (): { seo: SeoData | PageSeoData; path: string; ogType: 'website' | 'product' } => {
             if (productDetailData) {
                 const path = language === 'th' ? `/th/products/${productDetailData.slug}` : `/products/${productDetailData.slug}`;
@@ -152,7 +152,15 @@ const AppContent: React.FC = () => {
 
         const { seo, path, ogType } = getSeoData();
 
-        // --- 2. Process Keywords ---
+        // --- 2. Construct Hreflang links correctly ---
+        const hreflang = 'hreflang' in seo
+            ? (seo as PageSeoData).hreflang
+            : {
+                en: `/products/${productDetailData!.slug}`,
+                th: `/th/products/${productDetailData!.slug}`
+              };
+
+        // --- 3. Process Keywords ---
         const processKeywords = (arr: string[] = [], maxLength: number = 100): string[] => {
             const cleaned = arr.map(k => k.toLowerCase().trim()).filter(Boolean);
             return [...new Set(cleaned)].slice(0, maxLength);
@@ -163,7 +171,7 @@ const AppContent: React.FC = () => {
         const aboutKeywords = processKeywords(seo.about);
         const mentionsKeywords = processKeywords(seo.mentions);
 
-        // --- 3. Construct Meta Tags ---
+        // --- 4. Construct Meta Tags ---
         const metaTags: { [key: string]: string } = {
             'description': seo.description,
             'keywords': allKeywords.join(', '),
@@ -188,7 +196,7 @@ const AppContent: React.FC = () => {
             'twitter:image': seo.image || productDetailData?.images.hero || DEFAULT_OG_IMAGE,
         };
 
-        // --- 4. Get JSON-LD Data ---
+        // --- 5. Get JSON-LD Data ---
         const getJsonLdData = () => {
             if (productDetailData) {
                 return {
@@ -236,9 +244,8 @@ const AppContent: React.FC = () => {
         };
 
         const jsonLdData = getJsonLdData();
-        const hreflang = 'hreflang' in seo ? seo.hreflang : { en: '/', th: '/th' };
         
-        // --- 5. Update Head ---
+        // --- 6. Update Head ---
         updateHeadTags(seo.title, path, hreflang, metaTags, jsonLdData);
 
     }, [page, productDetailData, t, language]);

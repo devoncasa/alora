@@ -2,7 +2,6 @@ import React from 'react';
 import { CheckCircleIcon } from '../constants';
 import ImagePlaceholder from './ImagePlaceholder';
 import { useLanguage } from '../hooks/useLanguage';
-import { useParallax } from '../hooks/useParallax';
 
 const StickyCTA = () => {
     const { t } = useLanguage();
@@ -30,7 +29,6 @@ interface ScienceBehindPageProps {
 const ScienceBehindPage: React.FC<ScienceBehindPageProps> = ({ heroBannerUrl }) => {
     const { t } = useLanguage();
     const { hero, sections } = t.sciencePageContent;
-    const parallaxRef = useParallax(0.3);
 
     return (
         <div className="bg-white/70">
@@ -38,8 +36,7 @@ const ScienceBehindPage: React.FC<ScienceBehindPageProps> = ({ heroBannerUrl }) 
             {/* Hero */}
             <section className="hero-section relative py-32 overflow-hidden">
                 <div 
-                    ref={parallaxRef}
-                    className="absolute inset-0 bg-cover bg-center" 
+                    className="absolute inset-0 bg-cover bg-center bg-fixed" 
                     style={{ 
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',

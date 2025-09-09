@@ -3,7 +3,6 @@ import ProductCard from './ProductCard';
 import PersuasionCard from './PersuasionCard';
 import { useLanguage } from '../hooks/useLanguage';
 import ImagePlaceholder from './ImagePlaceholder';
-import { useParallax } from '../hooks/useParallax';
 
 interface LandingPageProps {
   setPage: (page: string) => void;
@@ -13,15 +12,13 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = ({ setPage, setSelectedProduct, heroBannerUrl }) => {
     const { t } = useLanguage();
-    const parallaxRef = useParallax(0.3);
 
     return (
         <>
             {/* Hero Section */}
             <section id="hero" className="hero-section relative flex items-center justify-center min-h-[70vh] text-center text-emerald-900 pt-32 pb-16 overflow-hidden">
                 <div 
-                    ref={parallaxRef}
-                    className="absolute inset-0 bg-cover bg-center" 
+                    className="absolute inset-0 bg-cover bg-center bg-fixed" 
                     style={{ 
                         backgroundImage: `url(${heroBannerUrl})`,
                         filter: 'blur(1px)',
