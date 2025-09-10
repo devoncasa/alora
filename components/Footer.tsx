@@ -58,6 +58,7 @@ const Footer: React.FC<FooterProps> = ({ setPage, openContactModal }) => {
                                     src="https://cdn.jsdelivr.net/gh/devoncasa/alora-assets@main/alora-logo-header.webp"
                                     alt={t.imageAlts.aloraLogo}
                                     className="h-10"
+                                    style={{ filter: 'brightness(0) invert(1) opacity(0.6)' }}
                                 />
                             </div>
                             <p className="text-sm text-gray-400">{t.footer.about.text}</p>
