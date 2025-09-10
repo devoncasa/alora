@@ -53,7 +53,7 @@ const InnovationPage: React.FC<InnovationPageProps> = ({ heroBannerUrl }) => {
                         filter: 'blur(1px)',
                     }}
                 ></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-50/80 to-green-50/80"></div>
+                <div className="absolute inset-0 bg-green-50/80"></div>
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-5 w-full">
                     <div className="lg:col-start-2 lg:col-span-3 px-6 text-center text-on-image-hero">
                         <h1 className="text-4xl md:text-6xl font-bold text-emerald-900/90 brand-font mb-4">{hero.title}</h1>
