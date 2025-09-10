@@ -5,6 +5,7 @@ interface HeaderProps {
     setPage: (page: string) => void;
     setSelectedProduct: (product: string | null) => void;
     openContactModal: () => void;
+    currentPage: string;
 }
 
 const LanguageSwitcher: React.FC<{className?: string}> = ({className}) => {
@@ -33,7 +34,7 @@ const LanguageSwitcher: React.FC<{className?: string}> = ({className}) => {
     );
 };
 
-const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContactModal }) => {
+const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContactModal, currentPage }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { t } = useLanguage();
@@ -114,6 +115,12 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
         openContactModal();
     };
 
+    const getNavLinkClass = (page: string, isMobile: boolean = false): string => {
+        const active = currentPage === page;
+        const mobileClass = isMobile ? 'text-2xl ' : '';
+        return `${mobileClass}font-semibold transition-colors ${active ? 'text-emerald-600' : 'text-gray-700 hover:text-emerald-600'}`;
+    };
+
     const MobileMenu = () => (
         <div 
             ref={mobileMenuRef}
@@ -127,12 +134,12 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
                      <LanguageSwitcher />
                 </div>
                 <nav className="flex flex-col items-center justify-center flex-grow space-y-8 text-center" aria-label="Mobile main navigation">
-                    <button onClick={() => handleAnchorLink('#products')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</button>
-                    <button onClick={() => handleNav('science')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button>
-                    <button onClick={() => handleNav('innovation')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button>
-                    <button onClick={() => handleNav('faq')} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button>
-                    <button onClick={handleContactClick} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button>
-                    <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm text-lg mt-8" aria-label={t.navigation.requestSamples}>
+                    <button onClick={() => handleAnchorLink('#products')} className={getNavLinkClass('landing', true)} aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</button>
+                    <button onClick={() => handleNav('science')} className={getNavLinkClass('science', true)} aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button>
+                    <button onClick={() => handleNav('innovation')} className={getNavLinkClass('innovation', true)} aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button>
+                    <button onClick={() => handleNav('faq')} className={getNavLinkClass('faq', true)} aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button>
+                    <button onClick={handleContactClick} className="text-2xl text-gray-700 hover:text-emerald-600 transition-colors font-semibold" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button>
+                    <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm hover:shadow-lg transform hover:-translate-y-1 text-lg mt-8" aria-label={t.navigation.requestSamples}>
                         {t.navigation.requestSamples}
                     </a>
                 </nav>
@@ -164,15 +171,15 @@ const Header: React.FC<HeaderProps> = ({ setPage, setSelectedProduct, openContac
 
                             {/* Desktop Nav */}
                             <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
-                                <button onClick={() => handleAnchorLink('#products')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</button>
-                                <button onClick={() => handleNav('science')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button>
-                                <button onClick={() => handleNav('innovation')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button>
-                                <button onClick={() => handleNav('faq')} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button>
-                                <button onClick={handleContactClick} className="text-gray-700 hover:text-emerald-600 transition-colors font-medium" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button>
+                                <button onClick={() => handleAnchorLink('#products')} className={getNavLinkClass('landing')} aria-label={`Navigate to ${t.navigation.products} section`}>{t.navigation.products}</button>
+                                <button onClick={() => handleNav('science')} className={getNavLinkClass('science')} aria-label={`Navigate to ${t.navigation.science} page`}>{t.navigation.science}</button>
+                                <button onClick={() => handleNav('innovation')} className={getNavLinkClass('innovation')} aria-label={`Navigate to ${t.navigation.innovation} page`}>{t.navigation.innovation}</button>
+                                <button onClick={() => handleNav('faq')} className={getNavLinkClass('faq')} aria-label={`Navigate to ${t.navigation.faq} page`}>{t.navigation.faq}</button>
+                                <button onClick={handleContactClick} className="text-gray-700 hover:text-emerald-600 transition-colors font-semibold" aria-label={`Open ${t.navigation.contact} form`}>{t.navigation.contact}</button>
                             </nav>
                             <div className="hidden md:flex items-center space-x-4">
                                 <LanguageSwitcher />
-                                 <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md" aria-label={t.navigation.requestSamples}>
+                                 <a href="mailto:medical.affairs@alora.bio" className="bg-emerald-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1" aria-label={t.navigation.requestSamples}>
                                     {t.navigation.requestSamples}
                                  </a>
                             </div>

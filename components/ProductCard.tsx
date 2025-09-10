@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails }) => 
             <div className="mt-auto pt-4">
                 <button 
                     onClick={() => onViewDetails(name)} 
-                    className="w-full block text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all"
+                    className="w-full block text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
                     aria-label={`View details for ${name}`}
                 >
                     {t.productCardContent.viewDetails}

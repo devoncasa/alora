@@ -93,14 +93,14 @@ const CookieConsentBanner: React.FC = () => {
                 <div className="flex flex-col sm:flex-row gap-3">
                     <button
                         onClick={handleAccept}
-                        className="w-full sm:w-auto flex-1 bg-emerald-600/90 text-white/90 px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm"
+                        className="w-full sm:w-auto flex-1 bg-emerald-600/90 text-white/90 px-5 py-2 rounded-md font-semibold hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1"
                         aria-label="Accept the use of cookies"
                     >
                         {t.cookieConsent.accept}
                     </button>
                     <button
                         onClick={handleDecline}
-                        className="w-full sm:w-auto flex-1 bg-gray-200/90 text-gray-700/90 px-5 py-2 rounded-md font-semibold hover:bg-gray-300 transition-all"
+                        className="w-full sm:w-auto flex-1 bg-gray-200/90 text-gray-700/90 px-5 py-2 rounded-md font-semibold hover:bg-gray-300 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1"
                         aria-label="Decline the use of cookies"
                     >
                         {t.cookieConsent.decline}

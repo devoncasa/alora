@@ -147,7 +147,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, setSelec
                                     <h3 className="text-xl font-semibold text-emerald-800/90 mb-3">{titles.downloads}</h3>
                                     <div className="space-y-3">
                                         {downloads.map(item => (
-                                            <a key={item.name} href={item.link} className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all text-sm" aria-label={`Download ${item.name}`}>
+                                            <a key={item.name} href={item.link} className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all text-sm shadow-md hover:shadow-lg transform hover:-translate-y-1" aria-label={`Download ${item.name}`}>
                                                 {item.name}
                                             </a>
                                         ))}

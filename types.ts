@@ -187,7 +187,12 @@ export interface AloraDataType {
                 title1: string; text1: string; title2: string; text2: string;
                 tunableTitle: string; tunableItems: string[];
             };
-            synergy: { title: string; items: string[]; };
+            synergy: {
+                title: string;
+                aloe: { title: string; items: string[]; };
+                pectin: { title: string; items: string[]; };
+                synergy: { title: string; items: string[]; };
+            };
             evidence: {
                 title: string;
                 wound: { title: string; text: string; };

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircleIcon } from '../constants';
 import ImagePlaceholder from './ImagePlaceholder';
 import { useLanguage } from '../hooks/useLanguage';
+import type { AloraDataType } from '../types';
 
 const StickyCTA = () => {
     const { t } = useLanguage();
@@ -10,16 +11,83 @@ const StickyCTA = () => {
             <div className="bg-white/70 p-6 rounded-lg shadow-xl border border-gray-200/50 w-64">
                 <h4 className="font-bold text-lg text-emerald-800/90 mb-4">{t.sciencePageContent.stickyCta.title}</h4>
                 <div className="space-y-3">
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Data Sheet" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all" aria-label={t.sciencePageContent.stickyCta.dataSheetButton}>
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Data Sheet" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1" aria-label={t.sciencePageContent.stickyCta.dataSheetButton}>
                         {t.sciencePageContent.stickyCta.dataSheetButton}
                     </a>
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Demo" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all" aria-label={t.sciencePageContent.stickyCta.demoButton}>
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Demo" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1" aria-label={t.sciencePageContent.stickyCta.demoButton}>
                         {t.sciencePageContent.stickyCta.demoButton}
                     </a>
                 </div>
             </div>
         </div>
     )
+};
+
+const InteractiveSynergyDiagram: React.FC<{ data: AloraDataType['sciencePageContent']['sections']['synergy'] }> = ({ data }) => {
+    const [activeSection, setActiveSection] = useState<'aloe' | 'pectin' | 'synergy'>('synergy');
+
+    const sections = {
+        aloe: data.aloe,
+        pectin: data.pectin,
+        synergy: data.synergy,
+    };
+    
+    const activeData = sections[activeSection];
+
+    const getButtonClass = (section: 'aloe' | 'pectin' | 'synergy') => {
+        const baseClass = "absolute rounded-full border-4 flex items-center justify-center text-center font-bold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500";
+        const activeClass = "bg-emerald-100/80 border-emerald-500 text-emerald-800 scale-105 shadow-lg z-20";
+        const inactiveClass = "bg-white/50 border-gray-300 hover:border-emerald-400 text-gray-700 hover:scale-105 hover:shadow-md z-10";
+        return `${baseClass} ${activeSection === section ? activeClass : inactiveClass}`;
+    };
+
+    return (
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 items-center">
+            {/* Diagram */}
+            <div className="relative h-64 md:h-80 w-full flex justify-center items-center">
+                <button
+                    onClick={() => setActiveSection('aloe')}
+                    aria-pressed={activeSection === 'aloe'}
+                    className={`${getButtonClass('aloe')} w-40 h-40 md:w-48 md:h-48 left-0 md:left-4`}
+                >
+                    <span className="p-2">{data.aloe.title}</span>
+                </button>
+                <button
+                    onClick={() => setActiveSection('pectin')}
+                    aria-pressed={activeSection === 'pectin'}
+                    className={`${getButtonClass('pectin')} w-40 h-40 md:w-48 md:h-48 right-0 md:right-4`}
+                >
+                     <span className="p-2">{data.pectin.title}</span>
+                </button>
+                 <button
+                    onClick={() => setActiveSection('synergy')}
+                    aria-pressed={activeSection === 'synergy'}
+                    className={`${getButtonClass('synergy')} w-28 h-28 md:w-32 md:h-32 z-30`}
+                >
+                    Synergy
+                </button>
+            </div>
+            {/* Content */}
+            <div className="min-h-[280px]">
+                <h3 className="text-xl font-bold text-emerald-700/90 mb-3">{activeData.title}</h3>
+                <ul className="space-y-3 text-gray-700/90">
+                    {activeData.items.map(item => (
+                        <li key={item} className="flex items-start p-3 bg-green-50/70 rounded-md animate-fade-in-sm">
+                            <span className="flex-shrink-0 mt-0.5"><CheckCircleIcon /></span>
+                            <span className="ml-3">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+             <style>{`
+                @keyframes fade-in-sm {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .animate-fade-in-sm { animation: fade-in-sm 0.4s ease-out forwards; }
+            `}</style>
+        </div>
+    );
 };
 
 interface ScienceBehindPageProps {
@@ -79,22 +147,8 @@ const ScienceBehindPage: React.FC<ScienceBehindPageProps> = ({ heroBannerUrl }) 
 
                         {/* Section B — Synergy Map */}
                         <section>
-                            <h2 className="text-3xl font-bold text-emerald-800/90 mb-8 text-center">{sections.synergy.title}</h2>
-                            <div className="grid md:grid-cols-2 gap-12 items-center">
-                                <div className="space-y-4">
-                                   <ul className="space-y-3 text-gray-700/90">
-                                        {sections.synergy.items.map(item => (
-                                            <li key={item} className="flex items-start p-3 bg-green-50/70 rounded-md">
-                                                <span className="flex-shrink-0 mt-0.5"><CheckCircleIcon /></span>
-                                                <span className="ml-3">{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div>
-                                    <ImagePlaceholder src="/assets/venn-diagram.jpg" alt={t.imageAlts.vennDiagram} className="h-80" />
-                                </div>
-                            </div>
+                             <h2 className="text-3xl font-bold text-emerald-800/90 mb-8 text-center">{sections.synergy.title}</h2>
+                             <InteractiveSynergyDiagram data={sections.synergy} />
                         </section>
 
                         {/* Section C — Evidence Highlights */}

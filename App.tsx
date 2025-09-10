@@ -277,7 +277,7 @@ const AppContent: React.FC = () => {
             <BackgroundImage imageUrl={backgroundImageUrl} altText={t.imageAlts.backgroundImage} />
             <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
             <div className="relative z-10">
-                <Header setPage={setPage} setSelectedProduct={setSelectedProduct} openContactModal={() => setIsContactModalOpen(true)} />
+                <Header setPage={setPage} setSelectedProduct={setSelectedProduct} openContactModal={() => setIsContactModalOpen(true)} currentPage={page} />
                 <main>
                     {renderPage()}
                 </main>

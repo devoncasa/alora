@@ -10,10 +10,10 @@ const StickyCTA = () => {
             <div className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20 w-64 transition-all duration-300 hover:shadow-2xl">
                 <h4 className="font-bold text-lg text-emerald-800/90 mb-4">{t.innovationPageContent.stickyCta.title}</h4>
                 <div className="space-y-3">
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Tech Dossier" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg" aria-label={t.innovationPageContent.stickyCta.dossierButton}>
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Tech Dossier" className="block w-full text-center bg-emerald-600/90 text-white/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-700 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1" aria-label={t.innovationPageContent.stickyCta.dossierButton}>
                         {t.innovationPageContent.stickyCta.dossierButton}
                     </a>
-                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Clinical Samples" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all" aria-label={t.innovationPageContent.stickyCta.samplesButton}>
+                    <a href="mailto:medical.affairs@alora.bio?subject=Request for Clinical Samples" className="block w-full text-center bg-transparent border border-emerald-600 text-emerald-600/90 px-4 py-2 rounded-md font-semibold hover:bg-emerald-600 hover:text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1" aria-label={t.innovationPageContent.stickyCta.samplesButton}>
                         {t.innovationPageContent.stickyCta.samplesButton}
                     </a>
                 </div>
